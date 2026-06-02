@@ -285,3 +285,34 @@ h1, h2, h3, h4, h5, h6 {
   .language-selector { display: none !important; }
   .btn-primary { padding: 12px 20px !important; font-size: 14px !important; }
 }
+
+.nav-email {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .nav-email {
+    display: none !important;
+  }
+}
+
+.floating-contact-btn {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 576px) {
+  .floating-contact-btn {
+    padding: 8px !important;
+    gap: 0 !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    border-radius: 50% !important;
+  }
+  .floating-contact-text {
+    display: none !important;
+  }
+}
+
+

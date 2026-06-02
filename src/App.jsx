@@ -210,6 +210,54 @@ const LeadCaptureModal = ({ isOpen, onClose, onSuccess }) => {
   );
 };
 
+const FloatingContact = () => {
+  return (
+    <motion.a 
+      href="mailto:info@saadhyam.com"
+      initial={{ opacity: 0, scale: 0.8, y: 50 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: 1, duration: 0.6, type: 'spring' }}
+      whileHover={{ y: -5, scale: 1.05 }}
+      style={{
+        position: 'fixed',
+        bottom: '24px',
+        right: '24px',
+        zIndex: 1000,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        background: 'rgba(20, 20, 20, 0.75)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '100px',
+        padding: '10px 18px',
+        textDecoration: 'none',
+        boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.15)',
+        transition: 'border-color 0.3s, box-shadow 0.3s'
+      }}
+      className="floating-contact-btn"
+    >
+      <div style={{
+        background: 'linear-gradient(135deg, #9333ea, #ec4899)',
+        width: '32px',
+        height: '32px',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 0 10px rgba(168, 85, 247, 0.4)',
+        flexShrink: 0
+      }}>
+        <Mail size={16} color="white" />
+      </div>
+      <div className="floating-contact-text" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: '1.2' }}>
+        <span style={{ fontSize: '9px', color: 'var(--text-secondary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Contact Us</span>
+        <span style={{ fontSize: '13px', color: 'white', fontWeight: 600 }}>info@saadhyam.com</span>
+      </div>
+    </motion.a>
+  );
+};
+
 const Navbar = ({ onOpenModal, lang, setLang }) => {
   const t = translations[lang];
   return (
@@ -226,6 +274,10 @@ const Navbar = ({ onOpenModal, lang, setLang }) => {
         ))}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <a href="mailto:info@saadhyam.com" className="nav-email" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '14px', fontWeight: 500, marginRight: '8px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>
+          <Mail size={14} color="var(--accent-purple)" />
+          <span>info@saadhyam.com</span>
+        </a>
         <select className="language-selector" value={lang} onChange={(e) => setLang(e.target.value)}>
           <option value="en">English</option><option value="hi">हिंदी</option><option value="te">తెలుగు</option>
         </select>
@@ -890,7 +942,7 @@ const Footer = () => (
       <div style={{ display: 'flex', gap: '24px' }}>
         <a href="#" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px' }}>Privacy</a>
         <a href="#" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px' }}>Terms</a>
-        <a href="#" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px' }}>Contact</a>
+        <a href="mailto:info@saadhyam.com" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>Contact</a>
       </div>
     </div>
   </footer>
@@ -915,6 +967,7 @@ function App() {
       <TrustAndBenefits />
       <CTA onOpenModal={() => setIsModalOpen(true)} />
       <Footer />
+      <FloatingContact />
     </>
   );
 }
