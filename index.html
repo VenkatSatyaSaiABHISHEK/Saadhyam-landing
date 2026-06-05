@@ -2,6 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      window.addEventListener('error', function(event) {
+        var errorDiv = document.createElement('div');
+        errorDiv.style.position = 'fixed';
+        errorDiv.style.top = '10px';
+        errorDiv.style.left = '10px';
+        errorDiv.style.right = '10px';
+        errorDiv.style.backgroundColor = '#f8d7da';
+        errorDiv.style.color = '#721c24';
+        errorDiv.style.padding = '15px';
+        errorDiv.style.border = '1px solid #f5c6cb';
+        errorDiv.style.borderRadius = '5px';
+        errorDiv.style.zIndex = '999999';
+        errorDiv.style.fontFamily = 'monospace';
+        errorDiv.style.whiteSpace = 'pre-wrap';
+        errorDiv.innerHTML = '<strong>JS Error:</strong> ' + event.message + '<br/>at ' + event.filename + ':' + event.lineno;
+        document.body.appendChild(errorDiv);
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        var errorDiv = document.createElement('div');
+        errorDiv.style.position = 'fixed';
+        errorDiv.style.top = '10px';
+        errorDiv.style.left = '10px';
+        errorDiv.style.right = '10px';
+        errorDiv.style.backgroundColor = '#f8d7da';
+        errorDiv.style.color = '#721c24';
+        errorDiv.style.padding = '15px';
+        errorDiv.style.border = '1px solid #f5c6cb';
+        errorDiv.style.borderRadius = '5px';
+        errorDiv.style.zIndex = '999999';
+        errorDiv.style.fontFamily = 'monospace';
+        errorDiv.style.whiteSpace = 'pre-wrap';
+        errorDiv.innerHTML = '<strong>Unhandled Promise Rejection:</strong> ' + event.reason;
+        document.body.appendChild(errorDiv);
+      });
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     

@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Play, ArrowRight, Sparkles, BarChart3, PenTool, MessageSquare, Globe, 
-  Search, Cpu, ChevronRight, TrendingUp, Users, Award, 
+  Search, Cpu, TrendingUp, Users, 
   X, CheckCircle, Zap, LayoutDashboard, Camera, Smartphone, Mail, FileText,
   Activity, Target, Lock, Headphones, RefreshCw, Database
 } from 'lucide-react';
 import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase';
+import AdminPanel from './AdminPanel';
 import './index.css';
 
 const translations = {
@@ -951,7 +952,33 @@ const Footer = () => (
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [lang, setLang] = useState('en');
-  const [isDashboardUnlocked, setIsDashboardUnlocked] = useState(false);
+  const [currentRoute, setCurrentRoute] = useState(window.location.pathname);
+  const [hash, setHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentRoute(window.location.pathname);
+      setHash(window.location.hash);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+
+    // Periodically sync route in case of manual address bar entries
+    const interval = setInterval(handleLocationChange, 1000);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const isAdmin = currentRoute === '/admin' || hash === '#admin' || hash === '#/admin' || window.location.search.includes('admin');
+
+  if (isAdmin) {
+    return <AdminPanel />;
+  }
 
   return (
     <>

@@ -316,3 +316,62 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+
+/* Admin Panel Custom Styles */
+.table-row-hover:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.search-input:focus {
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+.table-row-hover td {
+  transition: color 0.2s ease;
+}
+
+.table-row-hover:hover td {
+  color: #ffffff !important;
+}
+
+/* Responsive Admin Panel Styles */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .admin-header-actions {
+    width: 100% !important;
+    justify-content: flex-end !important;
+  }
+
+  .admin-charts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .admin-table-controls {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+  }
+
+  .admin-table-controls > div,
+  .admin-table-controls > select,
+  .admin-table-controls > button {
+    width: 100% !important;
+  }
+
+  .admin-table-controls .search-input {
+    width: 100% !important;
+  }
+
+  .admin-table-controls .btn-primary {
+    justify-content: center !important;
+  }
+}
