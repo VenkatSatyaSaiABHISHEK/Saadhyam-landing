@@ -18,6 +18,10 @@
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -373,5 +377,24 @@ h1, h2, h3, h4, h5, h6 {
 
   .admin-table-controls .btn-primary {
     justify-content: center !important;
+  }
+}
+
+/* Features Console Responsive Grid Styles */
+.features-console-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 320px;
+}
+
+@media (max-width: 991px) {
+  .features-console-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .features-console-grid > div {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .features-console-grid > div:last-child {
+    border-bottom: none !important;
   }
 }

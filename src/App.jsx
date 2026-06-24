@@ -4,17 +4,18 @@ import {
   Play, ArrowRight, Sparkles, BarChart3, PenTool, MessageSquare, Globe, 
   Search, Cpu, TrendingUp, Users, 
   X, CheckCircle, Zap, LayoutDashboard, Camera, Smartphone, Mail, FileText,
-  Activity, Target, Lock, Headphones, RefreshCw, Database
+  Activity, Target, Lock, Headphones, RefreshCw, Database, Settings, Layers, Check
 } from 'lucide-react';
 import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase';
 import AdminPanel from './AdminPanel';
+import MandatoryPages from './MandatoryPages';
 import './index.css';
 
 const translations = {
   en: {
-    navPlatform: "Platform", navSolutions: "Solutions", navPricing: "Pricing", startButton: "Let's Start",
+    navPlatform: "Platform", navSolutions: "Solutions", navFeatures: "Features", navPricing: "Pricing", startButton: "Let's Start",
     heroTag: "AI-Powered Business Growth Platform",
     heroTitlePart1: "AI That Powers Your Business Growth ",
     heroTitleGradient: "Automatically",
@@ -22,7 +23,7 @@ const translations = {
     freeTrial: "Start Free Trial", watchDemo: "Watch AI Demo"
   },
   hi: {
-    navPlatform: "मंच", navSolutions: "समाधान", navPricing: "मूल्य निर्धारण", startButton: "शुरू करें",
+    navPlatform: "मंच", navSolutions: "समाधान", navFeatures: "विशेषताएं", navPricing: "मूल्य निर्धारण", startButton: "शुरू करें",
     heroTag: "एआई-पावर्ड बिजनेस ग्रोथ प्लेटफॉर्म",
     heroTitlePart1: "एआई जो आपके व्यापार के विकास को संचालित करता है ",
     heroTitleGradient: "स्वचालित रूप से",
@@ -30,7 +31,7 @@ const translations = {
     freeTrial: "निःशुल्क परीक्षण शुरू करें", watchDemo: "एआई डेमो देखें"
   },
   te: {
-    navPlatform: "ప్లాట్‌ఫారమ్", navSolutions: "పరిష్కారాలు", navPricing: "ధరలు", startButton: "ప్రారంభించండి",
+    navPlatform: "ప్లాట్‌ఫారమ్", navSolutions: "పరిష్కారాలు", navFeatures: "ఫీచర్లు", navPricing: "ధరలు", startButton: "ప్రారంభించండి",
     heroTag: "AI-ఆధారిత వ్యాపార వృద్ధి వేదిక",
     heroTitlePart1: "మీ వ్యాపార వృద్ధిని నడిపించే AI ",
     heroTitleGradient: "స్వయంచాలకంగా",
@@ -269,9 +270,14 @@ const Navbar = ({ onOpenModal, lang, setLang }) => {
         <Logo width="32px" height="32px" />
         <span style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '22px', color: 'var(--text-primary)', letterSpacing: '-0.5px' }}>Saadhyam <span className="text-gradient">AI</span></span>
       </div>
-      <div className="nav-links" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-        {[t.navPlatform, t.navSolutions, t.navPricing].map((item, idx) => (
-          <a key={idx} href="#" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontWeight: 500, fontSize: '15px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>{item}</a>
+      <div className="nav-links" style={{ display: 'flex', gap: '32px', alignItems: 'center', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+        {[
+          { label: t.navPlatform, link: '#platform' },
+          { label: t.navSolutions, link: '#solutions' },
+          { label: t.navFeatures, link: '#features' },
+          { label: t.navPricing, link: '#pricing' }
+        ].map((item, idx) => (
+          <a key={idx} href={item.link} style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontWeight: 500, fontSize: '15px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>{item.label}</a>
         ))}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -357,7 +363,7 @@ const AnimatedDashboardFlow = () => {
   }, []);
 
   return (
-    <section className="section" style={{ background: 'transparent', paddingBottom: '60px', paddingTop: '0' }}>
+    <section id="platform" className="section" style={{ background: 'transparent', paddingBottom: '60px', paddingTop: '0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
            <h2 style={{ fontSize: '40px', color: 'white' }}>How Saadhyam AI <span className="text-gradient">Transforms Your Data</span></h2>
@@ -764,7 +770,7 @@ const AnimatedGenerator = ({ title, subtitle, inputAction, generatedOutput, icon
 
 const ContentStudioAndAutomation = () => {
   return (
-    <section className="section" style={{ background: 'transparent' }}>
+    <section id="solutions" className="section" style={{ background: 'transparent' }}>
       <div className="container">
         
         <AnimatedGenerator 
@@ -930,24 +936,843 @@ const CTA = ({ onOpenModal }) => {
   );
 };
 
-const Footer = () => (
-  <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '60px 0', background: 'rgba(0,0,0,0.4)' }}>
-    <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <Logo width="28px" height="28px" withGlow={false} />
-        <span style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '20px', letterSpacing: '-0.5px' }}>Saadhyam AI</span>
+const Footer = ({ onNavigate }) => {
+  const handleClick = (path) => (e) => {
+    e.preventDefault();
+    onNavigate(path);
+  };
+  return (
+    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '60px 0', background: 'rgba(0,0,0,0.4)' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Logo width="28px" height="28px" withGlow={false} />
+          <span style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '20px', letterSpacing: '-0.5px' }}>Saadhyam AI</span>
+        </div>
+        <div style={{ display: 'flex', gap: '24px', fontSize: '14px', color: 'var(--text-secondary)' }}>
+          <p style={{ margin: 0, fontWeight: 600 }}>Powered by MentNeo</p>
+        </div>
+        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+          <a href="/about" onClick={handleClick('/about')} style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>About Us</a>
+          <a href="/contact" onClick={handleClick('/contact')} style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>Contact Us</a>
+          <a href="/privacy" onClick={handleClick('/privacy')} style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>Privacy Policy</a>
+          <a href="/terms" onClick={handleClick('/terms')} style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>Terms & Conditions</a>
+          <a href="/refund" onClick={handleClick('/refund')} style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>Refund Policy</a>
+        </div>
       </div>
-      <div style={{ display: 'flex', gap: '24px', fontSize: '14px', color: 'var(--text-secondary)' }}>
-        <p style={{ margin: 0, fontWeight: 600 }}>Powered by MentNeo</p>
+    </footer>
+  );
+};
+
+const AnalyticsVisual = () => {
+  return (
+    <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Radar AI Scanner</span>
+        <span style={{ fontSize: '11px', background: 'rgba(168,85,247,0.1)', color: 'var(--accent-purple)', padding: '2px 8px', borderRadius: '100px' }}>Scanning...</span>
       </div>
-      <div style={{ display: 'flex', gap: '24px' }}>
-        <a href="#" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px' }}>Privacy</a>
-        <a href="#" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px' }}>Terms</a>
-        <a href="mailto:info@saadhyam.com" style={{ textDecoration: 'none', color: 'var(--text-secondary)', fontSize: '14px', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'white'} onMouseOut={(e) => e.target.style.color = 'var(--text-secondary)'}>Contact</a>
+      <div style={{ height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <motion.div 
+          animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
+          style={{ position: 'absolute', width: '50px', height: '50px', borderRadius: '50%', border: '1px solid var(--accent-purple)' }}
+        />
+        <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'var(--accent-purple)', boxShadow: '0 0 10px var(--accent-purple)' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', padding: '6px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}>
+          <span>Search trends detected</span>
+          <span style={{ color: '#10b981' }}>+124%</span>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', padding: '6px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px' }}>
+          <span>Competitor rank dropped</span>
+          <span style={{ color: '#10b981' }}>Comp B</span>
+        </div>
       </div>
     </div>
-  </footer>
-);
+  );
+};
+
+const GrowthVisual = () => {
+  return (
+    <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>AEO / GEO Optimizer</span>
+        <span style={{ fontSize: '11px', background: 'rgba(59,130,246,0.1)', color: 'var(--accent-blue)', padding: '2px 8px', borderRadius: '100px' }}>Optimized</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {[
+          { name: 'Schema Structured Data', checked: true },
+          { name: 'Google Maps Sync', checked: true },
+          { name: 'AI Search Recommendation Rank', checked: false }
+        ].map((item, idx) => (
+          <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+            <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', background: item.checked ? 'var(--accent-blue)' : 'transparent' }}>
+              {item.checked && <Check size={10} color="white" />}
+            </div>
+            <span style={{ color: item.checked ? 'white' : 'var(--text-secondary)' }}>{item.name}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
+        <motion.div animate={{ width: '66%' }} transition={{ duration: 1 }} style={{ height: '100%', background: 'var(--accent-blue)' }} />
+      </div>
+    </div>
+  );
+};
+
+const MarketingVisual = () => {
+  const [subTab, setSubTab] = useState('instagram'); // 'instagram' or 'whatsapp'
+  const [likes, setLikes] = useState(124);
+  const [whatsappStep, setWhatsappStep] = useState(0);
+
+  // Auto cycle sub-tabs inside MarketingVisual
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSubTab(prev => (prev === 'instagram' ? 'whatsapp' : 'instagram'));
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Increment likes for Instagram
+  useEffect(() => {
+    if (subTab !== 'instagram') return;
+    const interval = setInterval(() => {
+      setLikes(prev => prev + Math.floor(Math.random() * 3) + 1);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [subTab]);
+
+  // Animate WhatsApp messages step by step
+  useEffect(() => {
+    if (subTab !== 'whatsapp') return;
+    setWhatsappStep(0);
+    const timers = [
+      setTimeout(() => setWhatsappStep(1), 1000),
+      setTimeout(() => setWhatsappStep(2), 2500),
+      setTimeout(() => setWhatsappStep(3), 4500)
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [subTab]);
+
+  return (
+    <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      {/* Switcher Header */}
+      <div style={{ display: 'flex', gap: '6px', background: 'rgba(255,255,255,0.03)', padding: '4px', borderRadius: '8px' }}>
+        <button 
+          onClick={(e) => { e.stopPropagation(); setSubTab('instagram'); }} 
+          style={{ 
+            flex: 1, padding: '6px', fontSize: '11px', border: 'none', borderRadius: '6px', cursor: 'pointer',
+            background: subTab === 'instagram' ? 'rgba(236,72,153,0.15)' : 'transparent',
+            color: subTab === 'instagram' ? 'var(--accent-pink)' : 'var(--text-secondary)',
+            fontWeight: 600, transition: 'all 0.3s'
+          }}
+        >
+          Instagram Ad
+        </button>
+        <button 
+          onClick={(e) => { e.stopPropagation(); setSubTab('whatsapp'); }} 
+          style={{ 
+            flex: 1, padding: '6px', fontSize: '11px', border: 'none', borderRadius: '6px', cursor: 'pointer',
+            background: subTab === 'whatsapp' ? 'rgba(16,185,129,0.15)' : 'transparent',
+            color: subTab === 'whatsapp' ? '#10b981' : 'var(--text-secondary)',
+            fontWeight: 600, transition: 'all 0.3s'
+          }}
+        >
+          WhatsApp CRM
+        </button>
+      </div>
+
+      {subTab === 'instagram' ? (
+        /* Instagram Mockup UI */
+        <div style={{ background: '#121212', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+          {/* Header */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, #a855f7, #ec4899)', padding: '1px' }}>
+              <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                <img src="https://i.ibb.co/rRhY66tN/Whats-App-Image-2026-05-11-at-8-22-35-PM-removebg-preview.png" style={{ width: '80%', height: '80%', objectFit: 'contain' }} />
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+              <span style={{ fontSize: '11px', color: 'white', fontWeight: 600 }}>saadhyam.ai</span>
+              <span style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>Sponsored</span>
+            </div>
+          </div>
+
+          {/* Post Image Container */}
+          <div style={{ height: '120px', background: 'linear-gradient(135deg, #1e1b4b, #311042)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px' }}>
+            <div style={{ textAlign: 'center', zIndex: 1 }}>
+              <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.1)', color: 'white', padding: '4px 8px', borderRadius: '100px' }}>AI GROWTH ENGINE</span>
+              <h4 style={{ fontSize: '16px', margin: '6px 0 0', color: 'white', fontWeight: 800 }}>Scale 10X Automatically</h4>
+            </div>
+            <div style={{ position: 'absolute', bottom: '8px', right: '8px', background: 'rgba(0,0,0,0.6)', padding: '4px 8px', borderRadius: '4px', fontSize: '9px', color: 'white' }}>
+              Learn More
+            </div>
+          </div>
+
+          {/* Interaction Bar */}
+          <div style={{ padding: '8px 12px' }}>
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '4px' }}>
+              <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 1.5 }} style={{ color: 'var(--accent-pink)', fontSize: '14px', cursor: 'pointer' }}>❤️</motion.span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>💬</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>✈️</span>
+            </div>
+            <div style={{ fontSize: '11px', color: 'white', fontWeight: 600, marginBottom: '2px' }}>
+              {likes} likes
+            </div>
+            <div style={{ fontSize: '11px', lineHeight: '1.3', color: 'white' }}>
+              <span style={{ fontWeight: 600, marginRight: '4px' }}>saadhyam.ai</span>
+              <span style={{ color: 'var(--text-secondary)' }}>Automate customer acquisition, reviews, maps ranks, and socials. Launch campaigns in 1 click! 🚀</span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* WhatsApp Mockup UI */
+        <div style={{ background: '#0b141a', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+          {/* Header */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: '#202c33' }}>
+            <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ fontSize: '11px', color: 'white' }}>💬</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+              <span style={{ fontSize: '11px', color: 'white', fontWeight: 600 }}>Saadhyam Growth Agent</span>
+              <span style={{ fontSize: '9px', color: '#10b981' }}>online</span>
+            </div>
+          </div>
+
+          {/* Chat Workspace */}
+          <div style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px', minHeight: '140px', background: '#0b141a', backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '16px 16px' }}>
+            {whatsappStep >= 1 && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ alignSelf: 'flex-start', background: '#202c33', color: 'white', padding: '6px 10px', borderRadius: '0 10px 10px 10px', fontSize: '11px', maxWidth: '85%' }}>
+                Hi, I'm interested in automating my salon's local search rank.
+              </motion.div>
+            )}
+            
+            {whatsappStep >= 2 && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ alignSelf: 'flex-end', background: '#005c4b', color: 'white', padding: '6px 10px', borderRadius: '10px 0 10px 10px', fontSize: '11px', maxWidth: '85%' }}>
+                Hello! We can set up auto-review campaigns and GEO optimization. Would you like to confirm a free trial setup?
+              </motion.div>
+            )}
+
+            {whatsappStep >= 3 && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ alignSelf: 'flex-end', background: '#005c4b', color: 'white', padding: '10px', borderRadius: '10px', fontSize: '11px', width: '90%', border: '1px solid rgba(16,185,129,0.3)' }}>
+                <div style={{ fontWeight: 600, borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px', marginBottom: '6px' }}>Saadhyam AI Automation</div>
+                <span>Click below to claim your setup slot:</span>
+                <div style={{ background: '#202c33', color: '#10b981', textAlign: 'center', padding: '6px', borderRadius: '6px', marginTop: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
+                  🎯 Confirm Free Setup
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const CommunicationVisual = () => {
+  return (
+    <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '12px', height: '100%', justifyContent: 'space-between' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>AI Agents Interaction</span>
+        <span style={{ fontSize: '11px', background: 'rgba(168,85,247,0.1)', color: 'var(--accent-purple)', padding: '2px 8px', borderRadius: '100px' }}>Active</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '11px' }}>
+        <div style={{ alignSelf: 'flex-start', background: 'rgba(255,255,255,0.05)', padding: '8px 12px', borderRadius: '12px 12px 12px 0', maxWidth: '85%', color: 'white' }}>
+          "Are you open on Sunday evening for bookings?"
+        </div>
+        <div style={{ alignSelf: 'flex-end', background: 'rgba(168,85,247,0.1)', padding: '8px 12px', borderRadius: '12px 12px 0 12px', maxWidth: '85%', color: 'white', border: '1px solid rgba(168,85,247,0.2)' }}>
+          "Yes, we are open until 9 PM. Would you like to schedule?"
+        </div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--accent-purple)', fontSize: '11px', fontWeight: 600 }}>
+        <RefreshCw size={12} className="logo-img" /> AI Voice agent speaking...
+      </div>
+    </div>
+  );
+};
+
+const EcosystemVisual = () => {
+  return (
+    <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Workspace Plugins</span>
+        <span style={{ fontSize: '11px', background: 'rgba(236,72,153,0.1)', color: 'var(--accent-pink)', padding: '2px 8px', borderRadius: '100px' }}>Connected</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {[
+          { name: 'Firebase Database', active: true },
+          { name: 'Meta Ads Manager', active: true },
+          { name: 'WhatsApp API', active: false }
+        ].map((item, idx) => (
+          <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '12px', color: 'white' }}>{item.name}</span>
+            <div style={{ width: '32px', height: '18px', borderRadius: '100px', background: item.active ? 'var(--accent-pink)' : 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', padding: '2px', cursor: 'pointer', transition: 'all 0.3s' }}>
+              <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: 'white', transform: item.active ? 'translateX(14px)' : 'translateX(0)', transition: 'all 0.3s' }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const featuresTranslations = {
+  en: {
+    title: "All-in-One AI Business Suite",
+    subtitle: "Discover all the features built to automate, optimize, and scale your operations effortlessly.",
+    categories: [
+      {
+        name: "Strategy & Analytics",
+        desc: "Track, analyze, and forecast your performance.",
+        features: [
+          { name: "Dashboard", desc: "Real-time console mapping conversions and analytics." },
+          { name: "Business Analysis", desc: "Automated analysis uncovering leaks and opportunities." },
+          { name: "Radar AI", desc: "24/7 scanning of local market trends and audience demand." },
+          { name: "Competitor Analysis", desc: "Real-time benchmarking against top regional competitors." },
+          { name: "Daily Suggestions", desc: "Tailored AI action plans refreshed every morning." }
+        ]
+      },
+      {
+        name: "Growth & Optimization",
+        desc: "Rank higher in answer engines and sync maps.",
+        features: [
+          { name: "AEO & GEO", desc: "Optimizing structured content for AI search queries." },
+          { name: "Google Hub", desc: "Sync Google Reviews, business status, and local rankings." },
+          { name: "Website AI", desc: "Autonomous SEO enhancements and intelligent search widget." },
+          { name: "Plugins Store", desc: "Expand operations with modular plugins from our catalog." },
+          { name: "Pricing", desc: "Optimizing margins and tiers dynamically based on demand." }
+        ]
+      },
+      {
+        name: "Marketing & Content",
+        desc: "Create campaigns and schedule socials instantly.",
+        features: [
+          { name: "Content Creator", desc: "Generative copywriter for social posts, ads, and letters." },
+          { name: "Social Media", desc: "Scheduling calendars and auto-posting for major platforms." },
+          { name: "Meta Ads", desc: "Build, deploy, and target local ads on autopilot." },
+          { name: "WhatsApp Sales", desc: "Broadcasting and interactive WhatsApp drip campaigns." }
+        ]
+      },
+      {
+        name: "AI Communication",
+        desc: "Autopilot customer calls, chat, and reviews.",
+        features: [
+          { name: "AI Agents", desc: "Virtual employees handling workflows and scheduled actions." },
+          { name: "AI Voice Agent", desc: "24/7 customer service calls and booking manager." },
+          { name: "Review Reply", desc: "Autopilot replies responding to public reviews." },
+          { name: "B2B Chat", desc: "Instant messaging connecting you to vendors and partners." }
+        ]
+      },
+      {
+        name: "Workspace Control",
+        desc: "Manage permissions, keys, and sync databases.",
+        features: [
+          { name: "B2B Network", desc: "Directory linking with supplier chains and business leads." },
+          { name: "Settings", desc: "Centralized configurations for credentials and model weights." },
+          { name: "Support", desc: "24/7 live assistance and AI-powered ticket troubleshooter." }
+        ]
+      }
+    ]
+  },
+  te: {
+    title: "ఆల్-ఇన్-వన్ AI బిజినెస్ సూట్",
+    subtitle: "మీ వ్యాపారాన్ని ఆటోమేట్ చేయడానికి, ఆప్టిమైజ్ చేయడానికి మరియు స్కేల్ చేయడానికి అవసరమైన అన్ని ఫీచర్లు.",
+    categories: [
+      {
+        name: "వ్యూహం & విశ్లేషణ",
+        desc: "మీ వ్యాపార ప్రగతిని ట్రాక్ చేయండి మరియు విశ్లేషించండి.",
+        features: [
+          { name: "డ్యాష్‌బోర్డ్", desc: "రియల్ టైమ్ కన్వర్షన్స్ మరియు అనలిటిక్స్ మ్యాపింగ్." },
+          { name: "బిజినెస్ అనాలిసిస్", desc: "వ్యాపార సమస్యలను గుర్తించే స్వయంచాలక విశ్లేషణ." },
+          { name: "రాడార్ AI", desc: "స్థానిక మార్కెట్ ట్రెండ్స్ సేకరించే 24/7 స్కానర్." },
+          { name: "పోటీదారుల విశ్లేషణ", desc: "టాప్ పోటీదారులతో మీ ప్రగతిని సరిపోల్చండి." },
+          { name: "రోజువారీ సూచనలు", desc: "ప్రతి ఉదయం అందించబడే AI కార్యాచరణ ప్రణాళికలు." }
+        ]
+      },
+      {
+        name: "వృద్ధి & ఆప్టిమైజేషన్",
+        desc: "సెర్చ్ ఇంజిన్లలో ర్యాంక్ పెంచండి మరియు మ్యాప్స్ సింక్ చేయండి.",
+        features: [
+          { name: "AEO & GEO", desc: "AI సెర్చ్ క్వెరీల కోసం కంటెంట్ ఆప్టిమైజ్ చేయడం." },
+          { name: "గూగుల్ హబ్", desc: "గూగుల్ రివ్యూలు, లోకల్ ర్యాంకింగ్స్ సింక్ చేయడం." },
+          { name: "వెబ్‌సైట్ AI", desc: "స్వయంప్రతిపత్త SEO మెరుగుదలలు మరియు చాట్ విడ్జెట్." },
+          { name: "ప్లగిన్ల స్టోర్", desc: "మా కాటలాగ్ నుండి అదనపు ఫీచర్లు జోడించండి." },
+          { name: "ధరలు", desc: "డిమాండ్ ఆధారంగా ధరల ప్యాకేజీల ఆప్టిమైజేషన్." }
+        ]
+      },
+      {
+        name: "మార్కెటింగ్ & కంటెంట్",
+        desc: "సోషల్ మీడియా కంటెంట్ సృష్టించండి మరియు షెడ్యూల్ చేయండి.",
+        features: [
+          { name: "కంటెంట్ క్రియేటర్", desc: "పోస్ట్‌లు, ప్రకటనల కోసం జనరేటివ్ రైటర్." },
+          { name: "సోషల్ మీడియా", desc: "షెడ్యూలింగ్ క్యాలెండర్లు మరియు ఆటో-పోస్టింగ్." },
+          { name: "మెటా యాడ్స్", desc: "ఫేస్‌బుక్ మరియు ఇన్‌స్టాగ్రామ్ యాడ్స్ ఆటోపైలట్ బిల్డర్." },
+          { name: "వాట్సాప్ సేల్స్", desc: "వాట్సాప్ బ్రాడ్‌కాస్టింగ్ మరియు డ్రిప్ క్యాంపెయిన్లు." }
+        ]
+      },
+      {
+        name: "AI కమ్యూనికేషన్",
+        desc: "కస్టమర్ కాల్స్, చాట్ మరియు రివ్యూలు ఆటోపైలట్ చేయండి.",
+        features: [
+          { name: "AI ఏజెంట్లు", desc: "వర్క్‌ఫ్లోలను నిర్వహించే వర్చువల్ ఉద్యోగులు." },
+          { name: "AI వాయిస్ ఏజెంట్", desc: "కస్టమర్ కాల్స్ మరియు అపాయింట్‌మెంట్ మేనేజర్." },
+          { name: "రివ్యూ రిప్లై", desc: "రివ్యూలకు తక్షణమే ఆటోమేటిక్ సమాధానాలు." },
+          { name: "B2B చాట్", desc: "సరఫరాదారులు మరియు భాగస్వాములతో చాట్ చేయడం." }
+        ]
+      },
+      {
+        name: "వర్క్‌స్పేస్ నియంత్రణ",
+        desc: "అనుమతులు, కీలు మరియు డేటాబేస్ నిర్వహించండి.",
+        features: [
+          { name: "B2B నెట్‌వర్క్", desc: "సరఫరాదారులు మరియు లీడ్స్‌తో అనుసంధానించే డైరెక్టరీ." },
+          { name: "సెట్టింగులు", desc: "API క్రెడెన్షియల్స్ మరియు కంట్రోల్ కాన్ఫిగరేషన్లు." },
+          { name: "సపోర్ట్", desc: "24/7 లైవ్ అసిస్టెన్స్ మరియు AI టికెట్ సిస్టమ్." }
+        ]
+      }
+    ]
+  },
+  hi: {
+    title: "ऑल-इन-वन एआई बिजनेस सूट",
+    subtitle: "संचालन को स्वचालित, अनुकूलित और आसानी से स्केल करने के लिए निर्मित विशेषताएं।",
+    categories: [
+      {
+        name: "रणनीति और विश्लेषण",
+        desc: "अपने प्रदर्शन को ट्रैक, विश्लेषण और पूर्वानुमान करें।",
+        features: [
+          { name: "डैशबोर्ड", desc: "वास्तविक समय के रूपांतरण और विश्लेषण को प्रदर्शित करने वाला कंसोल।" },
+          { name: "व्यावसायिक विश्लेषण", desc: "राजस्व लीक और अवसरों को उजागर करने वाला स्वचालित विश्लेषण।" },
+          { name: "रडार एआई", desc: "स्थानीय बाजार के रुझान और दर्शक मांग की 24/7 स्कैनिंग।" },
+          { name: "प्रतिस्पर्धी विश्लेषण", desc: "क्षेत्रीय प्रतिस्पर्धियों के खिलाफ वास्तविक समय बेंचमार्किंग।" },
+          { name: "दैनिक सुझाव", desc: "हर सुबह अपडेट होने वाली अनुरूपित एआई कार्य योजनाएं।" }
+        ]
+      },
+      {
+        name: "विकास और अनुकूलन",
+        desc: "खोज इंजनों में उच्च रैंक प्राप्त करें और मैप्स सिंक करें।",
+        features: [
+          { name: "AEO और GEO", desc: "एआई खोज प्रश्नों के लिए सामग्री का अनुकूलन।" },
+          { name: "गूगल हब", desc: "गूगल समीक्षाएं, व्यावसायिक स्थिति और स्थानीय रैंकिंग सिंक करें।" },
+          { name: "वेबसाइट एआई", desc: "स्वायत्त SEO संवर्द्धन और बुद्धिमान खोज विजेट।" },
+          { name: "प्लगइन्स स्टोर", desc: "हमारे कैटलॉग से मॉड्यूलर प्लगइन्स जोड़ें।" },
+          { name: "मूल्य निर्धारण", desc: "मांग के आधार पर मूल्य निर्धारण का अनुकूलन।" }
+        ]
+      },
+      {
+        name: "विपणन और सामग्री",
+        desc: "अभियान बनाएं और सामाजिक पोस्ट तुरंत शेड्यूल करें।",
+        features: [
+          { name: "सामग्री निर्माता", desc: "सोशल पोस्ट, विज्ञापनों और पत्रों के लिए जनरेटिव कॉपीराइटर।" },
+          { name: "सोशल मीडिया", desc: "प्रमुख प्लेटफार्मों के लिए शेड्यूलिंग कैलेंडर और ऑटो-पोस्टिंग।" },
+          { name: "मेटा विज्ञापन", desc: "ऑटोपायलट विज्ञापन बिल्डर और स्थानीय दर्शकों के लिए लक्ष्यीकरण।" },
+          { name: "व्हाट्सएप बिक्री", desc: "ब्रॉडकास्टिंग और इंटरैक्टिव व्हाट्सएप ड्रिप अभियान।" }
+        ]
+      },
+      {
+        name: "एआई संचार",
+        desc: "ग्राहक कॉल, चैट और समीक्षाओं को ऑटोपायलट करें।",
+        features: [
+          { name: "एआई एजेंट", desc: "जटिल कार्यों और वर्कफ़्लो को संभालने वाले आभासी कर्मचारी।" },
+          { name: "एआई वॉयस एजेंट", desc: "24/7 ग्राहक सेवा कॉल और अपॉइंटमेंट मैनेजर।" },
+          { name: "समीक्षा उत्तर", desc: "सार्वजनिक समीक्षाओं के लिए तत्काल ऑटोपायलट उत्तर।" },
+          { name: "B2B चैट", desc: "विक्रेताओं और भागीदारों से जुड़ने वाला त्वरित संदेश।" }
+        ]
+      },
+      {
+        name: "कार्यस्थान नियंत्रण",
+        desc: "अनुमतियों, कुंजियों और डेटाबेस को प्रबंधित करें।",
+        features: [
+          { name: "B2B नेटवर्क", desc: "आपूर्तिकर्ताओं और व्यावसायिक लीड्स से जोड़ने वाली निर्देशिका।" },
+          { name: "सेटिंग्स", desc: "क्रेडेंशियल्स और मॉडल कॉन्फ़िगरेशन के लिए केंद्रीय नियंत्रण।" },
+          { name: "समर्थन", desc: "24/7 लाइव सहायता और एआई-संचालित टिकट प्रणाली।" }
+        ]
+      }
+    ]
+  }
+};
+
+const FeaturesConsole = ({ lang }) => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    const interval = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % 5);
+    }, 7000);
+    return () => clearInterval(interval);
+  }, [isAutoPlay]);
+
+  const ft = featuresTranslations[lang] || featuresTranslations.en;
+  const currentCategory = ft.categories[activeTab] || ft.categories[0];
+
+  const categoryIcons = [BarChart3, TrendingUp, PenTool, MessageSquare, Settings];
+
+  const renderVisual = () => {
+    switch (activeTab) {
+      case 0:
+        return <AnalyticsVisual />;
+      case 1:
+        return <GrowthVisual />;
+      case 2:
+        return <MarketingVisual />;
+      case 3:
+        return <CommunicationVisual />;
+      case 4:
+        return <EcosystemVisual />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <section id="features" className="section" style={{ background: 'transparent' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: '48px', marginBottom: '20px', color: 'white' }}>
+            {ft.title.split(' ')[0]} <span className="text-gradient">{ft.title.split(' ').slice(1).join(' ')}</span>
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '18px', maxWidth: '800px', margin: '0 auto' }}>
+            {ft.subtitle}
+          </p>
+        </div>
+
+        <div className="features-console-grid glass-panel" style={{ padding: '0', minHeight: '520px', overflow: 'hidden' }}>
+          {/* Sidebar Tabs */}
+          <div style={{ borderRight: '1px solid rgba(255,255,255,0.05)', background: 'rgba(0,0,0,0.2)', padding: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {ft.categories.map((cat, idx) => {
+                const Icon = categoryIcons[idx];
+                const isActive = activeTab === idx;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => { setActiveTab(idx); setIsAutoPlay(false); }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      padding: '16px',
+                      background: isActive ? 'rgba(255, 255, 255, 0.04)' : 'transparent',
+                      border: 'none',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      width: '100%',
+                      transition: 'all 0.3s'
+                    }}
+                  >
+                    <div style={{
+                      background: isActive ? 'linear-gradient(135deg, #9333ea, #ec4899)' : 'rgba(255,255,255,0.05)',
+                      padding: '10px',
+                      borderRadius: '8px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s'
+                    }}>
+                      <Icon size={18} color="white" />
+                    </div>
+                    <div>
+                      <h4 style={{ fontSize: '14px', color: isActive ? 'white' : 'var(--text-secondary)', margin: 0, fontWeight: 600 }}>{cat.name}</h4>
+                      <span style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>{cat.features.length} Features</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Details Content */}
+          <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+            <div>
+              <motion.h3 
+                key={`title-${activeTab}`}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                style={{ fontSize: '24px', color: 'white', marginBottom: '8px' }}
+              >
+                {currentCategory.name}
+              </motion.h3>
+              <motion.p 
+                key={`desc-${activeTab}`}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+                style={{ color: 'var(--text-secondary)', fontSize: '15px', marginBottom: '30px' }}
+              >
+                {currentCategory.desc}
+              </motion.p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '20px' }}>
+                <AnimatePresence mode="wait">
+                  {currentCategory.features.map((feature, idx) => (
+                    <motion.div
+                      key={`${activeTab}-feature-${idx}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className="bento-card"
+                      style={{ padding: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', padding: '6px', flexShrink: 0 }}>
+                        <Check size={14} color="var(--accent-purple)" />
+                      </div>
+                      <div>
+                        <h4 style={{ fontSize: '14px', color: 'white', marginBottom: '4px', fontWeight: 600 }}>{feature.name}</h4>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', lineHeight: '1.4', margin: 0 }}>{feature.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Screen Simulator */}
+          <div style={{ background: 'rgba(0,0,0,0.3)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ margin: '20px', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', background: 'rgba(20,20,20,0.8)', overflow: 'hidden' }}>
+              <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '10px 16px', background: 'rgba(255,255,255,0.02)', display: 'flex', gap: '6px' }}>
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }} />
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }} />
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }} />
+              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`sim-${activeTab}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {renderVisual()}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const pricingTranslations = {
+  en: {
+    title: "Simple, transparent pricing",
+    subtitle: "Choose the perfect plan to scale your business growth automatically.",
+    mo: "/ mo",
+    popular: "Most Popular",
+    special: "Enterprise Choice",
+    getStarted: "Get Started",
+    starter: {
+      name: "Starter Pack",
+      desc: "Ideal for startups and local shops looking to begin their AI growth journey."
+    },
+    premium: {
+      name: "Premium Pack",
+      desc: "Perfect for growing local businesses wanting automated operations."
+    },
+    exclusive: {
+      name: "Exclusive Pack",
+      desc: "Best for established brands requiring advanced strategy and scale."
+    },
+    specialPlan: {
+      name: "Saadhyam Special Plan",
+      desc: "The ultimate business growth operating system with tailored AI models."
+    },
+    features: {
+      starter: ["Core AI Growth Engine", "50 review auto-replies / mo", "Basic GEO/AEO reports", "1 connected data source", "Email support"],
+      premium: ["Advanced AI Engine", "Unlimited review replies", "Full AEO/GEO strategy", "3 connected data sources", "Social media automation", "Priority email & chat"],
+      exclusive: ["Premium AI model access", "Custom workflow triggers", "AEO/GEO campaigns", "7 connected data sources", "1-on-1 consulting / mo", "24/7 dedicated support"],
+      special: ["Custom AI model tuning", "Enterprise DB synchronizer", "Dedicated analyst team", "Unlimited data sources", "API & Webhook integrations", "Dedicated account manager"]
+    }
+  },
+  te: {
+    title: "సులువైన, పారదర్శక ధరలు",
+    subtitle: "మీ వ్యాపార వృద్ధిని ఆటోమేటిక్గా పెంచడానికి సరైన ప్లాన్ ఎంచుకోండి.",
+    mo: "/ నెలకు",
+    popular: "అత్యంత ప్రజాదరణ పొందినది",
+    special: "ఎంటర్‌ప్రైజ్ ఛాయిస్",
+    getStarted: "ప్రారంభించండి",
+    starter: {
+      name: "స్టార్టర్ ప్యాక్",
+      desc: "తమ AI ప్రయాణాన్ని ప్రారంభించాలనుకునే స్టార్టప్‌లు మరియు చిన్న దుకాణాలకు అనువైనది."
+    },
+    premium: {
+      name: "ప్రీమియం ప్యాక్",
+      desc: "ఆటోమేటిక్ సేవల ద్వారా వృద్ధి చెందాలనుకునే స్థానిక వ్యాపారాలకు సరిగ్గా సరిపోతుంది."
+    },
+    exclusive: {
+      name: "ఎక్స్‌క్లూజివ్ ప్యాక్",
+      desc: "అధునాతన వ్యూహం మరియు స్కేల్ అవసరమయ్యే స్థిరపడిన బ్రాండ్‌లకు ఉత్తమమైనది."
+    },
+    specialPlan: {
+      name: "సాధ్యం స్పెషల్ ప్లాన్",
+      desc: "అనుకూలీకరించిన AI మోడల్స్ మరియు నిరంతర మద్దతుతో కూడిన అంతిమ వ్యాపార వేదిక."
+    },
+    features: {
+      starter: ["కోర్ AI గ్రోత్ ఇంజిన్", "నెలకు 50 రివ్యూ ఆటో-రిప్లైలు", "ప్రాథమిక GEO/AEO రిపోర్టులు", "1 డేటా సోర్స్ కనెక్షన్", "ఇమెయిల్ మద్దతు"],
+      premium: ["అడ్వాన్స్డ్ AI ఇంజిన్", "అపరిమిత రివ్యూ రిప్లైలు", "పూర్తి AEO/GEO వ్యూహం", "3 డేటా సోర్స్ కనెక్షన్లు", "సోషల్ మీడియా ఆటోమేషన్", "ప్రాధాన్యత ఇమెయిల్ & చాట్"],
+      exclusive: ["ప్రీమియం AI మోడల్స్ యాక్సెస్", "కస్టమ్ వర్క్‌ఫ్లో ట్రిగ్గర్స్", "AEO/GEO క్యాంపెయిన్లు", "7 డేటా సోర్స్ కనెక్షన్లు", "నెలకు 1-on-1 కన్సల్టింగ్", "24/7 ప్రత్యేక మద్దతు"],
+      special: ["కస్టమ్ AI మోడల్ ట్యూనింగ్", "ఎంటర్‌ప్రైజ్ DB సింక్రనైజర్", "ప్రత్యేక అనలిస్ట్ బృందం", "అపరిమిత డేటా సోర్సులు", "API & వెబ్‌హుక్ ఇంటిగ్రేషన్లు", "ప్రత్యేక ఖాతా మేనేజర్"]
+    }
+  },
+  hi: {
+    title: "सरल और पारदर्शी मूल्य निर्धारण",
+    subtitle: "अपने व्यवसाय के विकास को स्वचालित रूप से बढ़ाने के लिए सही प्लान चुनें।",
+    mo: "/ माह",
+    popular: "सबसे लोकप्रिय",
+    special: "एंटरप्राइज पसंद",
+    getStarted: "शुरू करें",
+    starter: {
+      name: "स्टार्टर पैक",
+      desc: "एआई विकास यात्रा शुरू करने वाले स्टार्टअप और स्थानीय दुकानों के लिए आदर्श।",
+    },
+    premium: {
+      name: "प्रीमियम पैक",
+      desc: "स्वचालित संचालन चाहने वाले बढ़ते स्थानीय व्यवसायों के लिए बिल्कुल सही।",
+    },
+    exclusive: {
+      name: "एक्सक्लूसिव पैक",
+      desc: "उन्नत रणनीति और पैमाने की आवश्यकता वाले स्थापित ब्रांडों के लिए सर्वोत्तम।",
+    },
+    specialPlan: {
+      name: "साध्यम स्पेशल प्लान",
+      desc: "दर्जी से बने एआई मॉडल और निरंतर समर्थन के साथ परम व्यावसायिक विकास प्रणाली।",
+    },
+    features: {
+      starter: ["कोर एआई ग्रोथ इंजन", "50 समीक्षा ऑटो-उत्तर / माह", "बुनियादी GEO/AEO रिपोर्ट", "1 कनेक्टेड डेटा स्रोत", "ईमेल सहायता"],
+      premium: ["उन्नत एआई इंजन", "असीमित समीक्षा उत्तर", "पूर्ण AEO/GEO रणनीति", "3 कनेक्टेड डेटा स्रोत", "सोशल मीडिया स्वचालन", "प्राथमिकता ईमेल और चैट"],
+      exclusive: ["प्रीमियम एआई मॉडल पहुंच", "कस्टम वर्कफ़्लो ट्रिगर्स", "AEO/GEO अभियान", "7 कनेक्टेड डेटा स्रोत", "1-on-1 परामर्श / माह", "24/7 समर्पित सहायता"],
+      special: ["कस्टम एआई मॉडल ट्यूनिंग", "एंटरप्राइज डीबी सिंक्रोनाइज़र", "समर्पित विश्लेषक टीम", "असीमित डेटा स्रोत", "API और वेबहुक एकीकरण", "समर्पित खाता प्रबंधक"]
+    }
+  }
+};
+
+const Pricing = ({ onOpenModal, lang }) => {
+  const pt = pricingTranslations[lang] || pricingTranslations.en;
+  
+  const plans = [
+    {
+      id: 'starter',
+      name: pt.starter.name,
+      price: '₹2,999',
+      desc: pt.starter.desc,
+      features: pt.features.starter,
+      accent: 'var(--accent-blue)',
+      popular: false
+    },
+    {
+      id: 'premium',
+      name: pt.premium.name,
+      price: '₹9,999',
+      desc: pt.premium.desc,
+      features: pt.features.premium,
+      accent: 'var(--accent-purple)',
+      popular: true
+    },
+    {
+      id: 'exclusive',
+      name: pt.exclusive.name,
+      price: '₹14,999',
+      desc: pt.exclusive.desc,
+      features: pt.features.exclusive,
+      accent: 'var(--accent-pink)',
+      popular: false
+    },
+    {
+      id: 'special',
+      name: pt.specialPlan.name,
+      price: '₹24,999',
+      desc: pt.specialPlan.desc,
+      features: pt.features.special,
+      accent: 'var(--accent-lavender)',
+      popular: false,
+      isSpecial: true
+    }
+  ];
+
+  return (
+    <section id="pricing" className="section" style={{ background: 'transparent', position: 'relative' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: '48px', marginBottom: '20px', color: 'white' }}>
+            {pt.title.split(',')[0]}, <span className="text-gradient">{pt.title.split(',')[1] || pt.title}</span>
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '18px', maxWidth: '800px', margin: '0 auto' }}>
+            {pt.subtitle}
+          </p>
+        </div>
+
+        <div className="pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
+          {plans.map((plan) => (
+            <div 
+              key={plan.id} 
+              className="glass-panel glass-card-hover" 
+              style={{ 
+                padding: '32px 24px', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'space-between', 
+                border: plan.popular ? '2px solid var(--accent-purple)' : plan.isSpecial ? '2px solid var(--accent-pink)' : '1px solid var(--glass-border)',
+                background: plan.popular ? 'rgba(168, 85, 247, 0.04)' : plan.isSpecial ? 'rgba(236, 72, 153, 0.04)' : 'var(--glass-bg)',
+                borderRadius: 'var(--card-radius)'
+              }}
+            >
+              <div>
+                {plan.popular && (
+                  <div style={{ alignSelf: 'flex-start', display: 'inline-block', background: 'var(--accent-purple)', color: 'white', fontSize: '11px', fontWeight: 700, padding: '4px 12px', borderRadius: '100px', textTransform: 'uppercase', marginBottom: '16px', letterSpacing: '0.5px' }}>
+                    {pt.popular}
+                  </div>
+                )}
+                {plan.isSpecial && (
+                  <div style={{ alignSelf: 'flex-start', display: 'inline-block', background: 'var(--accent-pink)', color: 'white', fontSize: '11px', fontWeight: 700, padding: '4px 12px', borderRadius: '100px', textTransform: 'uppercase', marginBottom: '16px', letterSpacing: '0.5px' }}>
+                    {pt.special}
+                  </div>
+                )}
+                {!plan.popular && !plan.isSpecial && (
+                  <div style={{ height: '33px' }} />
+                )}
+                
+                <h3 style={{ fontSize: '20px', color: 'white', marginBottom: '8px' }}>{plan.name}</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', minHeight: '40px', marginBottom: '24px', lineHeight: '1.4' }}>{plan.desc}</p>
+                
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '24px' }}>
+                  <span style={{ fontSize: '36px', fontWeight: 900, color: 'white' }}>{plan.price}</span>
+                  <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>{pt.mo}</span>
+                </div>
+                
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0' }}>
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: '14px', color: 'var(--text-secondary)' }}>
+                      <CheckCircle size={16} color={plan.accent} style={{ flexShrink: 0 }} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <button 
+                className="btn-primary" 
+                onClick={onOpenModal} 
+                style={{ 
+                  width: '100%', 
+                  justifyContent: 'center', 
+                  padding: '12px', 
+                  fontSize: '14px',
+                  background: plan.popular ? 'linear-gradient(135deg, #9333ea, #ec4899)' : plan.isSpecial ? 'linear-gradient(135deg, #ec4899, #f43f5e)' : 'rgba(255,255,255,0.05)',
+                  border: plan.popular || plan.isSpecial ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: plan.popular || plan.isSpecial ? '0 10px 20px -5px rgba(168, 85, 247, 0.4)' : 'none'
+                }}
+              >
+                {pt.getStarted}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -975,9 +1800,35 @@ function App() {
   }, []);
 
   const isAdmin = currentRoute === '/admin' || hash === '#admin' || hash === '#/admin' || window.location.search.includes('admin');
+  const isTerms = currentRoute === '/terms' || hash === '#terms' || hash === '#/terms';
+  const isPrivacy = currentRoute === '/privacy' || hash === '#privacy' || hash === '#/privacy';
+  const isRefund = currentRoute === '/refund' || hash === '#refund' || hash === '#/refund';
+  const isContact = currentRoute === '/contact' || hash === '#contact' || hash === '#/contact';
+  const isAbout = currentRoute === '/about' || hash === '#about' || hash === '#/about';
+
+  const handleNavigate = (path) => {
+    window.history.pushState(null, '', path);
+    window.dispatchEvent(new Event('popstate'));
+  };
 
   if (isAdmin) {
     return <AdminPanel />;
+  }
+
+  if (isTerms) {
+    return <MandatoryPages pageType="terms" lang={lang} setLang={setLang} />;
+  }
+  if (isPrivacy) {
+    return <MandatoryPages pageType="privacy" lang={lang} setLang={setLang} />;
+  }
+  if (isRefund) {
+    return <MandatoryPages pageType="refund" lang={lang} setLang={setLang} />;
+  }
+  if (isContact) {
+    return <MandatoryPages pageType="contact" lang={lang} setLang={setLang} />;
+  }
+  if (isAbout) {
+    return <MandatoryPages pageType="about" lang={lang} setLang={setLang} />;
   }
 
   return (
@@ -988,12 +1839,14 @@ function App() {
       <AnimatedDashboardFlow />
       <AIAnalysis />
       <Workflow />
+      <FeaturesConsole lang={lang} />
       <ContentStudioAndAutomation />
       <AEOSection />
       <AIAssistant />
       <TrustAndBenefits />
+      <Pricing onOpenModal={() => setIsModalOpen(true)} lang={lang} />
       <CTA onOpenModal={() => setIsModalOpen(true)} />
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
       <FloatingContact />
     </>
   );
