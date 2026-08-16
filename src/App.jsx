@@ -1655,7 +1655,7 @@ const Pricing = ({ onOpenModal, lang }) => {
     {
       id: 'starter',
       name: pt.starter.name,
-      price: '₹2,999',
+      price: '$29',
       desc: pt.starter.desc,
       features: pt.features.starter,
       accent: 'var(--accent-blue)',
@@ -1664,7 +1664,7 @@ const Pricing = ({ onOpenModal, lang }) => {
     {
       id: 'premium',
       name: pt.premium.name,
-      price: '₹9,999',
+      price: '$99',
       desc: pt.premium.desc,
       features: pt.features.premium,
       accent: 'var(--accent-purple)',
@@ -1673,7 +1673,7 @@ const Pricing = ({ onOpenModal, lang }) => {
     {
       id: 'exclusive',
       name: pt.exclusive.name,
-      price: '₹14,999',
+      price: '$149',
       desc: pt.exclusive.desc,
       features: pt.features.exclusive,
       accent: 'var(--accent-pink)',
@@ -1682,7 +1682,7 @@ const Pricing = ({ onOpenModal, lang }) => {
     {
       id: 'special',
       name: pt.specialPlan.name,
-      price: '₹24,999',
+      price: '$249',
       desc: pt.specialPlan.desc,
       features: pt.features.special,
       accent: 'var(--accent-lavender)',
