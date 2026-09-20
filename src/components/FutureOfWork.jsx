@@ -9,9 +9,9 @@ export default function FutureOfWork({ onOpenModal }) {
       className="section" 
       style={{ 
         position: 'relative',
-        background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.15) 0%, rgba(3, 3, 3, 0.95) 75%)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
+        background: 'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.14) 0%, rgba(250, 248, 249, 0.98) 75%)',
+        borderTop: '1px solid rgba(236, 72, 153, 0.16)',
+        borderBottom: '1px solid rgba(236, 72, 153, 0.16)'
       }}
     >
       <div className="container" style={{ textAlign: 'center', maxWidth: '960px', margin: '0 auto' }}>
@@ -20,7 +20,7 @@ export default function FutureOfWork({ onOpenModal }) {
           <span>THE EXPONENTIAL ENTERPRISE</span>
         </div>
 
-        <h3 style={{ fontSize: '28px', color: '#a1a1aa', fontWeight: 600, marginBottom: '14px', letterSpacing: '-0.01em' }}>
+        <h3 style={{ fontSize: '28px', color: '#64748b', fontWeight: 600, marginBottom: '14px', letterSpacing: '-0.01em' }}>
           The company of the future won’t have only employees.
         </h3>
 
@@ -28,14 +28,14 @@ export default function FutureOfWork({ onOpenModal }) {
           fontSize: '64px',
           fontWeight: 900,
           letterSpacing: '-0.04em',
-          color: '#ffffff',
+          color: '#09090b',
           lineHeight: 1.1,
           marginBottom: '28px'
         }}>
           It will have an <span className="text-gradient">AI workforce.</span>
         </div>
 
-        <p style={{ fontSize: '20px', color: '#d4d4d8', lineHeight: 1.6, maxWidth: '760px', margin: '0 auto 48px' }}>
+        <p style={{ fontSize: '20px', color: '#475569', lineHeight: 1.6, maxWidth: '760px', margin: '0 auto 48px' }}>
           A new generation of high-leverage companies will operate with human leaders and autonomous AI Humans working side by side in lockstep.
         </p>
 
@@ -49,30 +49,30 @@ export default function FutureOfWork({ onOpenModal }) {
             margin: '0 auto 50px'
           }}
         >
-          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: 'rgba(255,255,255,0.02)' }}>
-            <div style={{ fontSize: '40px', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.03em' }}>10</div>
-            <div style={{ fontSize: '13px', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>
+          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: '#ffffff', border: '1px solid rgba(236, 72, 153, 0.16)', boxShadow: '0 4px 15px rgba(236, 72, 153, 0.05)' }}>
+            <div style={{ fontSize: '40px', fontWeight: 900, color: '#09090b', letterSpacing: '-0.03em' }}>10</div>
+            <div style={{ fontSize: '13px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px', fontWeight: 600 }}>
               Humans
             </div>
           </div>
 
-          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: 'rgba(168, 85, 247, 0.1)', border: '1px solid rgba(168, 85, 247, 0.4)' }}>
-            <div style={{ fontSize: '40px', fontWeight: 900, color: '#d8b4fe', letterSpacing: '-0.03em' }}>100</div>
-            <div style={{ fontSize: '13px', color: '#ec4899', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>
+          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: '#fdf2f8', border: '1.5px solid rgba(236, 72, 153, 0.35)', boxShadow: '0 8px 24px rgba(236, 72, 153, 0.12)' }}>
+            <div style={{ fontSize: '40px', fontWeight: 900, color: '#db2777', letterSpacing: '-0.03em' }}>100</div>
+            <div style={{ fontSize: '13px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px', fontWeight: 700 }}>
               AI Humans
             </div>
           </div>
 
-          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: 'rgba(255,255,255,0.02)' }}>
-            <div style={{ fontSize: '40px', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.03em' }}>One</div>
-            <div style={{ fontSize: '13px', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>
+          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: '#ffffff', border: '1px solid rgba(236, 72, 153, 0.16)', boxShadow: '0 4px 15px rgba(236, 72, 153, 0.05)' }}>
+            <div style={{ fontSize: '40px', fontWeight: 900, color: '#09090b', letterSpacing: '-0.03em' }}>One</div>
+            <div style={{ fontSize: '13px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px', fontWeight: 600 }}>
               Company
             </div>
           </div>
 
-          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-            <div style={{ fontSize: '40px', fontWeight: 900, color: '#34d399', letterSpacing: '-0.03em' }}>One</div>
-            <div style={{ fontSize: '13px', color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>
+          <div className="cyber-card" style={{ padding: '24px', textAlign: 'center', background: 'rgba(16, 185, 129, 0.08)', border: '1.5px solid rgba(16, 185, 129, 0.3)', boxShadow: '0 8px 24px rgba(16, 185, 129, 0.08)' }}>
+            <div style={{ fontSize: '40px', fontWeight: 900, color: '#059669', letterSpacing: '-0.03em' }}>One</div>
+            <div style={{ fontSize: '13px', color: '#059669', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px', fontWeight: 700 }}>
               Intelligent Workforce
             </div>
           </div>

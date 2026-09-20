@@ -28,12 +28,12 @@ export default function LifecycleSection({ onOpenModal }) {
             <span>CONTINUOUS WORKFORCE EVOLUTION</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             Create. Train. Deploy.{' '}
             <span className="text-gradient">Improve.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6 }}>
             Saadhyam turns AI from a tool you occasionally use into a workforce you continuously manage, calibrate, and scale.
           </p>
         </div>
@@ -59,19 +59,21 @@ export default function LifecycleSection({ onOpenModal }) {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '14px',
-                  background: 'rgba(255, 255, 255, 0.02)'
+                  background: '#ffffff',
+                  border: '1px solid rgba(236, 72, 153, 0.16)',
+                  boxShadow: '0 4px 14px rgba(236, 72, 153, 0.05)'
                 }}
               >
                 <div
                   style={{
-                    width: '36px',
-                    height: '36px',
+                    width: '38px',
+                    height: '38px',
                     borderRadius: '10px',
-                    background: 'rgba(168, 85, 247, 0.15)',
+                    background: 'rgba(236, 72, 153, 0.1)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#c084fc',
+                    color: '#db2777',
                     flexShrink: 0
                   }}
                 >
@@ -84,10 +86,10 @@ export default function LifecycleSection({ onOpenModal }) {
                       PHASE {step.num}
                     </span>
                   </div>
-                  <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff', marginBottom: '4px' }}>
+                  <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#09090b', marginBottom: '4px' }}>
                     {step.title}
                   </h3>
-                  <p style={{ fontSize: '13px', color: '#a1a1aa', lineHeight: 1.4 }}>
+                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, fontWeight: 500 }}>
                     {step.desc}
                   </p>
                 </div>

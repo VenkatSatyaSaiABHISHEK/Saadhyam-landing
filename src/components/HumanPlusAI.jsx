@@ -32,15 +32,15 @@ export default function HumanPlusAI({ onOpenModal }) {
             <span>THE SYMBIOTIC ADVANTAGE</span>
           </div>
 
-          <h2 style={{ fontSize: '32px', color: '#a1a1aa', fontWeight: 600, marginBottom: '12px' }}>
+          <h2 style={{ fontSize: '32px', color: '#64748b', fontWeight: 600, marginBottom: '12px' }}>
             The future isn't humans vs AI.
           </h2>
 
-          <div style={{ fontSize: '54px', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '20px', color: '#ffffff' }}>
+          <div style={{ fontSize: '54px', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '20px', color: '#09090b' }}>
             It’s <span className="text-gradient">Humans + AI Humans.</span>
           </div>
 
-          <p style={{ fontSize: '19px', color: '#d4d4d8', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto' }}>
+          <p style={{ fontSize: '19px', color: '#475569', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto' }}>
             Saadhyam is engineered to augment and elevate human teams. Humans define the mission and purpose; AI Humans handle continuous execution.
           </p>
         </div>
@@ -60,8 +60,9 @@ export default function HumanPlusAI({ onOpenModal }) {
             className="cyber-card"
             style={{
               padding: '36px',
-              border: '1px solid rgba(236, 72, 153, 0.3)',
-              background: 'linear-gradient(180deg, rgba(236, 72, 153, 0.08) 0%, rgba(10, 10, 15, 0.8) 100%)'
+              border: '1.5px solid rgba(236, 72, 153, 0.25)',
+              background: '#ffffff',
+              boxShadow: '0 20px 50px -10px rgba(236, 72, 153, 0.12)'
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
@@ -69,7 +70,7 @@ export default function HumanPlusAI({ onOpenModal }) {
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                background: 'rgba(236, 72, 153, 0.15)',
+                background: 'rgba(236, 72, 153, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -78,10 +79,10 @@ export default function HumanPlusAI({ onOpenModal }) {
                 <Brain size={22} />
               </div>
               <div>
-                <span style={{ fontSize: '11px', color: '#ec4899', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '11px', color: '#db2777', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                   Human Team
                 </span>
-                <h3 style={{ fontSize: '22px', fontWeight: 700, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#09090b' }}>
                   Humans Focus On
                 </h3>
               </div>
@@ -94,22 +95,23 @@ export default function HumanPlusAI({ onOpenModal }) {
                     width: '20px',
                     height: '20px',
                     borderRadius: '50%',
-                    background: 'rgba(236, 72, 153, 0.2)',
+                    background: 'rgba(236, 72, 153, 0.15)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#ec4899',
                     fontSize: '11px',
+                    fontWeight: 700,
                     flexShrink: 0,
                     marginTop: '2px'
                   }}>
                     ✦
                   </div>
                   <div>
-                    <div style={{ fontSize: '15px', fontWeight: 600, color: '#ffffff', marginBottom: '2px' }}>
+                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#09090b', marginBottom: '2px' }}>
                       {item.title}
                     </div>
-                    <div style={{ fontSize: '13px', color: '#a1a1aa', lineHeight: 1.4 }}>
+                    <div style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, fontWeight: 500 }}>
                       {item.desc}
                     </div>
                   </div>
@@ -123,8 +125,9 @@ export default function HumanPlusAI({ onOpenModal }) {
             className="cyber-card"
             style={{
               padding: '36px',
-              border: '1px solid rgba(168, 85, 247, 0.35)',
-              background: 'linear-gradient(180deg, rgba(168, 85, 247, 0.1) 0%, rgba(10, 10, 15, 0.8) 100%)'
+              border: '1.5px solid rgba(168, 85, 247, 0.3)',
+              background: '#ffffff',
+              boxShadow: '0 20px 50px -10px rgba(168, 85, 247, 0.12)'
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
@@ -136,15 +139,15 @@ export default function HumanPlusAI({ onOpenModal }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#a855f7'
+                color: '#9333ea'
               }}>
                 <Cpu size={22} />
               </div>
               <div>
-                <span style={{ fontSize: '11px', color: '#a855f7', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '11px', color: '#9333ea', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                   Digital Workforce
                 </span>
-                <h3 style={{ fontSize: '22px', fontWeight: 700, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#09090b' }}>
                   AI Humans Focus On
                 </h3>
               </div>
@@ -157,22 +160,23 @@ export default function HumanPlusAI({ onOpenModal }) {
                     width: '20px',
                     height: '20px',
                     borderRadius: '50%',
-                    background: 'rgba(168, 85, 247, 0.2)',
+                    background: 'rgba(16, 185, 129, 0.15)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#c084fc',
+                    color: '#059669',
                     fontSize: '11px',
+                    fontWeight: 800,
                     flexShrink: 0,
                     marginTop: '2px'
                   }}>
                     ✓
                   </div>
                   <div>
-                    <div style={{ fontSize: '15px', fontWeight: 600, color: '#ffffff', marginBottom: '2px' }}>
+                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#09090b', marginBottom: '2px' }}>
                       {item.title}
                     </div>
-                    <div style={{ fontSize: '13px', color: '#a1a1aa', lineHeight: 1.4 }}>
+                    <div style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, fontWeight: 500 }}>
                       {item.desc}
                     </div>
                   </div>

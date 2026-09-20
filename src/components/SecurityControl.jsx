@@ -49,13 +49,13 @@ export default function SecurityControl({ onOpenModal }) {
             <span>ENTERPRISE GOVERNANCE & COMPLIANCE</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             Powerful AI.{' '}
             <span className="text-gradient">Controlled by you.</span>
           </h2>
 
-          <p style={{ fontSize: '19px', color: '#d4d4d8', lineHeight: 1.6, maxWidth: '680px', margin: '0 auto' }}>
-            Your AI workforce should be powerful — <strong style={{ color: '#ffffff' }}>but always accountable.</strong> Saadhyam provides enterprise-grade guardrails so you stay in total control.
+          <p style={{ fontSize: '19px', color: '#475569', lineHeight: 1.6, maxWidth: '680px', margin: '0 auto' }}>
+            Your AI workforce should be powerful — <strong style={{ color: '#09090b' }}>but always accountable.</strong> Saadhyam provides enterprise-grade guardrails so you stay in total control.
           </p>
         </div>
 
@@ -79,7 +79,10 @@ export default function SecurityControl({ onOpenModal }) {
                   padding: '24px',
                   display: 'flex',
                   alignItems: 'flex-start',
-                  gap: '16px'
+                  gap: '16px',
+                  background: '#ffffff',
+                  border: '1px solid rgba(236, 72, 153, 0.16)',
+                  boxShadow: '0 4px 15px rgba(236, 72, 153, 0.05)'
                 }}
               >
                 <div
@@ -87,11 +90,11 @@ export default function SecurityControl({ onOpenModal }) {
                     width: '40px',
                     height: '40px',
                     borderRadius: '10px',
-                    background: 'rgba(16, 185, 129, 0.12)',
+                    background: 'rgba(16, 185, 129, 0.1)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#34d399',
+                    color: '#059669',
                     flexShrink: 0
                   }}
                 >
@@ -99,10 +102,10 @@ export default function SecurityControl({ onOpenModal }) {
                 </div>
 
                 <div>
-                  <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff', marginBottom: '6px' }}>
+                  <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#09090b', marginBottom: '6px' }}>
                     {feat.title}
                   </h3>
-                  <p style={{ fontSize: '13px', color: '#a1a1aa', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5, fontWeight: 500 }}>
                     {feat.desc}
                   </p>
                 </div>
@@ -122,18 +125,19 @@ export default function SecurityControl({ onOpenModal }) {
             gap: '28px',
             flexWrap: 'wrap',
             padding: '18px 24px',
-            background: 'rgba(255, 255, 255, 0.02)',
-            borderRadius: '12px',
-            border: '1px solid rgba(255, 255, 255, 0.06)'
+            background: '#ffffff',
+            borderRadius: '14px',
+            border: '1.5px solid rgba(236, 72, 153, 0.2)',
+            boxShadow: '0 4px 15px rgba(236, 72, 153, 0.06)'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#e4e4e7', fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#09090b', fontWeight: 700 }}>
             <CheckCircle2 size={16} color="#10b981" /> SOC-2 Type II Compliance Ready
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#e4e4e7', fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#09090b', fontWeight: 700 }}>
             <CheckCircle2 size={16} color="#10b981" /> GDPR & CCPA Data Privacy
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#e4e4e7', fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#09090b', fontWeight: 700 }}>
             <CheckCircle2 size={16} color="#10b981" /> 256-bit TLS / AES Vault Encryption
           </div>
         </div>

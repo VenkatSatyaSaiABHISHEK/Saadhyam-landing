@@ -4,14 +4,15 @@ import {
   TrendingUp, Headphones, Cpu, Search, DollarSign, UserCheck, 
   ArrowRight, CheckCircle2, Sparkles, Zap, Shield 
 } from 'lucide-react';
+import { Blobatar } from '@blobatar/react';
 
 const rolesData = [
   {
     category: 'Sales',
     title: 'AI Sales Executive',
+    blobatarName: 'AlexSales',
     icon: TrendingUp,
-    accent: '#a855f7',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    accent: '#ec4899',
     description: 'Autonomous outbound & inbound pipeline driver that never leaves a lead cold.',
     pipeline: [
       'Find leads',
@@ -27,9 +28,9 @@ const rolesData = [
   {
     category: 'Customer Support',
     title: 'AI Support Executive',
+    blobatarName: 'MayaSupport',
     icon: Headphones,
     accent: '#ec4899',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
     description: 'Instant multi-channel customer resolution with intelligent escalation rules.',
     pipeline: [
       'Receive request',
@@ -44,9 +45,9 @@ const rolesData = [
   {
     category: 'Operations',
     title: 'AI Operations Executive',
+    blobatarName: 'MarcusOps',
     icon: Cpu,
-    accent: '#3b82f6',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    accent: '#a855f7',
     description: 'Continuous monitoring of internal pipelines, webhooks, and team syncs.',
     pipeline: [
       'Monitor workflows',
@@ -61,9 +62,9 @@ const rolesData = [
   {
     category: 'Research',
     title: 'AI Research Analyst',
+    blobatarName: 'ElenaResearch',
     icon: Search,
     accent: '#06b6d4',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
     description: 'Deep market intelligence, competitor pricing synthesis, and trend forecasting.',
     pipeline: [
       'Collect information',
@@ -78,9 +79,9 @@ const rolesData = [
   {
     category: 'Finance',
     title: 'AI Finance Assistant',
+    blobatarName: 'DavidFinance',
     icon: DollarSign,
     accent: '#10b981',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
     description: 'Automated invoice reconciliation, fraud detection, and expense audits.',
     pipeline: [
       'Track transactions',
@@ -95,9 +96,9 @@ const rolesData = [
   {
     category: 'HR',
     title: 'AI HR Assistant',
+    blobatarName: 'JordanHR',
     icon: UserCheck,
     accent: '#f59e0b',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
     description: 'Candidate screening, interview coordination, and seamless team onboarding.',
     pipeline: [
       'Screen applications',
@@ -129,37 +130,41 @@ export default function RoleShowcase({ onOpenModal }) {
             <span>SPECIALIZED DIGITAL EMPLOYEES</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             Build an AI Human for{' '}
             <span className="text-gradient">almost any digital role.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6 }}>
             Every role in your company has repeatable workflows. Saadhyam allows you to create digital employees designed specifically for those functions.
           </p>
         </div>
 
         {/* Category Filters */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '40px' }}>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              style={{
-                padding: '8px 18px',
-                borderRadius: '9999px',
-                fontSize: '13px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                background: selectedCategory === cat ? 'rgba(168, 85, 247, 0.25)' : 'rgba(255, 255, 255, 0.03)',
-                border: selectedCategory === cat ? '1px solid #a855f7' : '1px solid rgba(255, 255, 255, 0.08)',
-                color: selectedCategory === cat ? '#ffffff' : '#a1a1aa',
-                transition: 'all 0.2s'
-              }}
-            >
-              {cat}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                style={{
+                  padding: '9px 20px',
+                  borderRadius: '9999px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  background: isSelected ? 'linear-gradient(135deg, #ec4899, #a855f7)' : '#ffffff',
+                  border: isSelected ? '1px solid transparent' : '1px solid rgba(236, 72, 153, 0.2)',
+                  color: isSelected ? '#ffffff' : '#475569',
+                  boxShadow: isSelected ? '0 4px 15px rgba(236, 72, 153, 0.3)' : '0 2px 8px rgba(0,0,0,0.03)',
+                  transition: 'all 0.2s'
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
 
         {/* Roles Grid */}
@@ -180,39 +185,32 @@ export default function RoleShowcase({ onOpenModal }) {
                   padding: '28px',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  background: '#ffffff'
                 }}
               >
                 <div>
                   {/* Top Bar */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <img
-                        src={role.avatar}
-                        alt={role.title}
-                        style={{
-                          width: '46px',
-                          height: '46px',
-                          borderRadius: '12px',
-                          objectFit: 'cover',
-                          border: `1.5px solid ${role.accent}`
-                        }}
-                      />
+                      <div className="blobatar-frame" style={{ width: '50px', height: '50px', borderRadius: '14px', flexShrink: 0 }}>
+                        <Blobatar name={role.blobatarName} animate="hover" size={44} />
+                      </div>
                       <div>
-                        <div style={{ fontSize: '12px', color: role.accent, fontWeight: 700, textTransform: 'uppercase' }}>
+                        <div style={{ fontSize: '11px', color: '#db2777', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                           {role.category}
                         </div>
-                        <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#ffffff' }}>
+                        <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#09090b' }}>
                           {role.title}
                         </h3>
                       </div>
                     </div>
 
                     <div style={{
-                      width: '36px',
-                      height: '36px',
+                      width: '38px',
+                      height: '38px',
                       borderRadius: '10px',
-                      background: 'rgba(255,255,255,0.04)',
+                      background: 'rgba(236, 72, 153, 0.1)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -222,13 +220,13 @@ export default function RoleShowcase({ onOpenModal }) {
                     </div>
                   </div>
 
-                  <p style={{ fontSize: '14px', color: '#a1a1aa', lineHeight: 1.5, marginBottom: '20px' }}>
+                  <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.5, marginBottom: '20px' }}>
                     {role.description}
                   </p>
 
                   {/* Execution Pipeline Steps */}
                   <div style={{ marginBottom: '20px' }}>
-                    <div style={{ fontSize: '11px', color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, marginBottom: '8px' }}>
+                    <div style={{ fontSize: '11px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, marginBottom: '8px' }}>
                       Operational Pipeline
                     </div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
@@ -236,17 +234,17 @@ export default function RoleShowcase({ onOpenModal }) {
                         <React.Fragment key={step}>
                           <span style={{
                             fontSize: '11px',
-                            background: 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.08)',
-                            padding: '3px 8px',
+                            background: '#fdf2f8',
+                            border: '1px solid rgba(236, 72, 153, 0.18)',
+                            padding: '4px 9px',
                             borderRadius: '6px',
-                            color: '#d4d4d8',
-                            fontWeight: 500
+                            color: '#09090b',
+                            fontWeight: 600
                           }}>
                             {step}
                           </span>
                           {idx < role.pipeline.length - 1 && (
-                            <span style={{ color: '#71717a', fontSize: '11px' }}>→</span>
+                            <span style={{ color: '#ec4899', fontSize: '11px', fontWeight: 700 }}>→</span>
                           )}
                         </React.Fragment>
                       ))}
@@ -255,27 +253,28 @@ export default function RoleShowcase({ onOpenModal }) {
 
                   {/* KPI Bar */}
                   <div style={{
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    background: 'rgba(16, 185, 129, 0.08)',
+                    border: '1px solid rgba(16, 185, 129, 0.25)',
                     borderRadius: '10px',
                     padding: '10px 14px',
                     fontSize: '12px',
-                    color: '#e4e4e7',
+                    color: '#065f46',
+                    fontWeight: 600,
                     marginBottom: '20px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px'
                   }}>
-                    <CheckCircle2 size={14} color="#10b981" />
+                    <CheckCircle2 size={15} color="#10b981" />
                     <span>{role.kpis}</span>
                   </div>
                 </div>
 
                 {/* Bottom CTA */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ display: 'flex', gap: '6px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid rgba(236, 72, 153, 0.14)' }}>
+                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                     {role.tools.slice(0, 3).map((tool) => (
-                      <span key={tool} style={{ fontSize: '10px', color: '#71717a', fontFamily: 'monospace' }}>
+                      <span key={tool} style={{ fontSize: '10px', color: '#64748b', background: '#f8fafc', padding: '2px 7px', borderRadius: '4px', border: '1px solid rgba(0,0,0,0.06)', fontFamily: 'monospace' }}>
                         {tool}
                       </span>
                     ))}
@@ -286,9 +285,9 @@ export default function RoleShowcase({ onOpenModal }) {
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      color: role.accent,
+                      color: '#db2777',
                       fontSize: '13px',
-                      fontWeight: 600,
+                      fontWeight: 700,
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',

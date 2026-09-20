@@ -60,15 +60,15 @@ export default function WhatIsAnAIHuman({ onOpenModal }) {
             <span>DEFINING THE NEXT FRONTIER</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '20px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '20px', color: '#09090b' }}>
             An AI Human is more than an{' '}
             <span className="text-gradient">AI assistant.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.7, marginBottom: '16px' }}>
-            An AI Human is a <strong>persistent digital worker built around a specific role</strong>.
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7, marginBottom: '16px' }}>
+            An AI Human is a <strong style={{ color: '#09090b' }}>persistent digital worker built around a specific role</strong>.
           </p>
-          <p style={{ fontSize: '17px', color: '#d4d4d8', lineHeight: 1.7 }}>
+          <p style={{ fontSize: '17px', color: '#64748b', lineHeight: 1.7 }}>
             It understands its responsibilities, follows organizational workflows, interacts with business systems,
             communicates with people via text and voice, performs tasks autonomously, and reports measurable outcomes.
           </p>
@@ -81,8 +81,9 @@ export default function WhatIsAnAIHuman({ onOpenModal }) {
             maxWidth: '1080px',
             margin: '0 auto',
             overflow: 'hidden',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.8)'
+            border: '1.5px solid rgba(236, 72, 153, 0.25)',
+            boxShadow: '0 20px 50px -15px rgba(236, 72, 153, 0.15)',
+            background: '#ffffff'
           }}
         >
           {/* Table Header */}
@@ -90,25 +91,25 @@ export default function WhatIsAnAIHuman({ onOpenModal }) {
             style={{
               display: 'grid',
               gridTemplateColumns: '2fr 3fr 4fr',
-              background: 'rgba(10, 10, 18, 0.95)',
+              background: '#fdf2f8',
               padding: '20px 28px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-              fontWeight: 700,
+              borderBottom: '1px solid rgba(236, 72, 153, 0.15)',
+              fontWeight: 800,
               fontSize: '14px',
               letterSpacing: '0.04em'
             }}
           >
-            <div style={{ color: '#a1a1aa' }}>DIMENSION</div>
-            <div style={{ color: '#ef4444', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ color: '#475569' }}>DIMENSION</div>
+            <div style={{ color: '#dc2626', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Bot size={16} /> Traditional AI (Chatbots)
             </div>
-            <div style={{ color: '#a855f7', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ color: '#db2777', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Sparkles size={16} color="#ec4899" /> Saadhyam AI Human (Employees)
             </div>
           </div>
 
           {/* Rows */}
-          <div style={{ background: 'rgba(5, 5, 10, 0.8)' }}>
+          <div style={{ background: '#ffffff' }}>
             {comparisonData.map((row, idx) => (
               <div
                 key={row.feature}
@@ -118,26 +119,26 @@ export default function WhatIsAnAIHuman({ onOpenModal }) {
                   display: 'grid',
                   gridTemplateColumns: '2fr 3fr 4fr',
                   padding: '18px 28px',
-                  borderBottom: idx === comparisonData.length - 1 ? 'none' : '1px solid rgba(255, 255, 255, 0.04)',
-                  background: hoveredIdx === idx ? 'rgba(168, 85, 247, 0.05)' : 'transparent',
+                  borderBottom: idx === comparisonData.length - 1 ? 'none' : '1px solid rgba(236, 72, 153, 0.1)',
+                  background: hoveredIdx === idx ? '#fdf2f8' : 'transparent',
                   transition: 'background 0.2s ease',
                   alignItems: 'center'
                 }}
               >
-                <div style={{ fontWeight: 600, fontSize: '14px', color: '#f4f4f5' }}>
+                <div style={{ fontWeight: 700, fontSize: '14px', color: '#09090b' }}>
                   {row.feature}
                 </div>
 
-                <div style={{ fontSize: '14px', color: '#71717a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ fontSize: '14px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ color: '#ef4444', fontWeight: 800, fontSize: '12px' }}>✕</span>
                   <span>{row.traditional}</span>
                 </div>
 
                 <div>
-                  <div style={{ fontSize: '14px', color: '#ffffff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
+                  <div style={{ fontSize: '14px', color: '#09090b', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
                     <span style={{
                       background: 'rgba(16, 185, 129, 0.15)',
-                      color: '#34d399',
+                      color: '#059669',
                       width: '18px',
                       height: '18px',
                       borderRadius: '50%',
@@ -147,9 +148,9 @@ export default function WhatIsAnAIHuman({ onOpenModal }) {
                       fontSize: '11px',
                       flexShrink: 0
                     }}>✓</span>
-                    <span style={{ color: '#f3e8ff' }}>{row.saadhyam}</span>
+                    <span style={{ color: '#09090b' }}>{row.saadhyam}</span>
                   </div>
-                  <div style={{ fontSize: '12px', color: '#a1a1aa', paddingLeft: '26px' }}>
+                  <div style={{ fontSize: '12px', color: '#64748b', paddingLeft: '26px' }}>
                     {row.whyItMatters}
                   </div>
                 </div>

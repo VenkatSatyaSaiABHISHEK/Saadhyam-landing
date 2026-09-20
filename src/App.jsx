@@ -25,6 +25,11 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import CreateAIHumanModal from './components/CreateAIHumanModal';
 
+// Industry Landing Page System
+import { resolveIndustryFromRoute } from './data/industries';
+import IndustriesHub from './components/industry/IndustriesHub';
+import IndustryLandingPage from './components/industry/IndustryLandingPage';
+
 // Existing Portals
 import AdminPanel from './AdminPanel';
 import MandatoryPages from './MandatoryPages';
@@ -49,7 +54,7 @@ function App() {
 
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleLocationChange);
-    const interval = setInterval(handleLocationChange, 800);
+    const interval = setInterval(handleLocationChange, 400);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
@@ -71,6 +76,8 @@ function App() {
       return;
     }
     window.history.pushState(null, '', path);
+    setCurrentRoute(window.location.pathname);
+    setHash(window.location.hash);
     window.dispatchEvent(new Event('popstate'));
     window.scrollTo(0, 0);
   };
@@ -86,6 +93,16 @@ function App() {
   const isRefund = currentRoute === '/refund' || hash === '#refund' || hash === '#/refund';
   const isContact = currentRoute === '/contact' || hash === '#contact' || hash === '#/contact';
   const isAbout = currentRoute === '/about' || hash === '#about' || hash === '#/about';
+
+  // Industries Hub Directory Route
+  const isIndustriesHub = 
+    currentRoute === '/industries' || 
+    currentRoute === '/industries/' || 
+    hash === '#industries' || 
+    hash === '#/industries';
+
+  // Specific Industry Match (supports /real-estate, /industries/real-estate, #real-estate, etc.)
+  const matchedIndustry = resolveIndustryFromRoute(currentRoute, hash);
 
   // Sub-pages rendering
   if (isAdmin) {
@@ -107,6 +124,27 @@ function App() {
     return <MandatoryPages pageType="about" lang={lang} setLang={setLang} />;
   }
 
+  // 1. Industry Hub Directory (/industries)
+  if (isIndustriesHub) {
+    return (
+      <IndustriesHub 
+        onNavigate={handleNavigate} 
+        onOpenModal={() => setIsModalOpen(true)} 
+      />
+    );
+  }
+
+  // 2. Specific Industry Landing Page (/real-estate, /industries/hospitals, etc.)
+  if (matchedIndustry) {
+    return (
+      <IndustryLandingPage 
+        industry={matchedIndustry} 
+        onNavigate={handleNavigate} 
+      />
+    );
+  }
+
+  // 3. Main Home AI Humans Platform Landing Page
   return (
     <div style={{ position: 'relative', overflowX: 'hidden', minHeight: '100vh', background: 'var(--base-bg)' }}>
       {/* Background Ambience Elements */}
@@ -118,7 +156,7 @@ function App() {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, transparent 70%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
           zIndex: 0
@@ -132,7 +170,7 @@ function App() {
           width: '700px',
           height: '700px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%)',
           filter: 'blur(90px)',
           pointerEvents: 'none',
           zIndex: 0
@@ -218,14 +256,14 @@ function App() {
               width: '42px',
               height: '42px',
               borderRadius: '50%',
-              background: 'rgba(20, 20, 30, 0.85)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              color: '#ffffff',
+              background: 'rgba(255, 255, 255, 0.9)',
+              border: '1.5px solid rgba(236, 72, 153, 0.3)',
+              color: '#09090b',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.5)'
+              boxShadow: '0 4px 14px rgba(0,0,0,0.08)'
             }}
             aria-label="Scroll to top"
           >
@@ -238,7 +276,7 @@ function App() {
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsModalOpen(true)}
           style={{
-            background: 'linear-gradient(135deg, #9333ea, #ec4899)',
+            background: 'linear-gradient(135deg, #ec4899, #db2777)',
             border: 'none',
             color: '#ffffff',
             padding: '12px 20px',
@@ -249,7 +287,7 @@ function App() {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            boxShadow: '0 0 25px rgba(168, 85, 247, 0.5)'
+            boxShadow: '0 0 25px rgba(236, 72, 153, 0.45)'
           }}
         >
           <MessageSquare size={16} />

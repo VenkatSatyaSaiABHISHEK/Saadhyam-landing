@@ -19,9 +19,9 @@ export default function FinalCTA({ onOpenModal }) {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '700px',
-          height: '350px',
-          background: 'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.1) 50%, transparent 75%)',
+          width: '750px',
+          height: '380px',
+          background: 'radial-gradient(ellipse at center, rgba(236, 72, 153, 0.22) 0%, rgba(168, 85, 247, 0.12) 50%, transparent 75%)',
           filter: 'blur(70px)',
           pointerEvents: 'none',
           zIndex: 0
@@ -39,7 +39,7 @@ export default function FinalCTA({ onOpenModal }) {
           fontWeight: 900,
           letterSpacing: '-0.03em',
           lineHeight: 1.1,
-          color: '#ffffff',
+          color: '#09090b',
           marginBottom: '20px'
         }}>
           Your next employee{' '}
@@ -48,7 +48,7 @@ export default function FinalCTA({ onOpenModal }) {
 
         <p style={{
           fontSize: '20px',
-          color: '#a1a1aa',
+          color: '#475569',
           lineHeight: 1.6,
           maxWidth: '680px',
           margin: '0 auto 36px'
@@ -76,17 +76,17 @@ export default function FinalCTA({ onOpenModal }) {
           </a>
         </div>
 
-        <div style={{ fontSize: '14px', color: '#71717a', fontWeight: 500, letterSpacing: '0.04em' }}>
+        <div style={{ fontSize: '14px', color: '#64748b', fontWeight: 600, letterSpacing: '0.04em' }}>
           Build the workforce of tomorrow. Today.
         </div>
 
         <div style={{
           marginTop: '36px',
           paddingTop: '28px',
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          borderTop: '1px solid rgba(236, 72, 153, 0.18)',
           fontSize: '15px',
-          fontWeight: 700,
-          color: '#d8b4fe',
+          fontWeight: 800,
+          color: '#db2777',
           letterSpacing: '0.05em'
         }}>
           Saadhyam — Build Your AI Workforce.

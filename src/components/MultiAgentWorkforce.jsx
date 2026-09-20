@@ -3,44 +3,50 @@ import { motion } from 'framer-motion';
 import { 
   Users, ArrowRight, Share2, Layers, Cpu, Sparkles, CheckCircle2, Zap 
 } from 'lucide-react';
+import { Blobatar } from '@blobatar/react';
 
 const collaborativeNodes = [
   {
     step: 1,
     name: 'AI Sales Human',
-    identity: 'Alex',
+    identity: 'AlexSales',
+    displayName: 'Alex',
     action: 'Discovers high-intent enterprise lead from product signup',
     output: 'Lead payload: Acme Corp, 500+ employees, high ARR potential',
-    color: '#a855f7'
+    color: '#ec4899'
   },
   {
     step: 2,
     name: 'AI Research Human',
-    identity: 'Elena',
+    identity: 'ElenaResearch',
+    displayName: 'Elena',
     action: 'Performs automated background & competitor audit',
     output: 'Intelligence dossier: Tech stack includes Legacy CRM, $14M series B',
-    color: '#3b82f6'
+    color: '#06b6d4'
   },
   {
     step: 3,
     name: 'AI Proposal Human',
-    identity: 'Christian',
+    identity: 'ChristianProposal',
+    displayName: 'Christian',
     action: 'Generates custom ROI proposal and migration timeline',
     output: 'Dynamic 12-page PDF deck customized with Acme Corp branding',
-    color: '#ec4899'
+    color: '#a855f7'
   },
   {
     step: 4,
     name: 'AI Scheduling Human',
-    identity: 'Sophia',
+    identity: 'SophiaVoice',
+    displayName: 'Sophia',
     action: 'Coordinates VP of Sales calendar with buyer timezones',
     output: 'Confirmed 45-min Zoom demo scheduled on Thursday 2 PM EST',
-    color: '#06b6d4'
+    color: '#ec4899'
   },
   {
     step: 5,
     name: 'AI CRM Human',
-    identity: 'Marcus',
+    identity: 'MarcusOps',
+    displayName: 'Marcus',
     action: 'Logs deal stage, touches, and syncs account pipeline',
     output: 'Salesforce Stage: Opportunity Created ($85,000 Expected ARR)',
     color: '#10b981'
@@ -67,12 +73,12 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
             <span>COLLECTIVE WORKFORCE INTELLIGENCE</span>
           </div>
 
-          <h2 style={{ fontSize: '48px', lineHeight: 1.15, marginBottom: '20px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '48px', lineHeight: 1.15, marginBottom: '20px', color: '#09090b' }}>
             One AI Human is useful.{' '}
             <span className="text-gradient">An AI workforce is powerful.</span>
           </h2>
 
-          <p style={{ fontSize: '19px', color: '#a1a1aa', lineHeight: 1.7, maxWidth: '780px', margin: '0 auto' }}>
+          <p style={{ fontSize: '19px', color: '#475569', lineHeight: 1.7, maxWidth: '780px', margin: '0 auto' }}>
             Instead of building one giant, fragile AI system, create specialized AI Humans that hand off context and collaborate seamlessly as a coordinated digital workforce.
           </p>
         </div>
@@ -84,18 +90,19 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
             maxWidth: '1080px',
             margin: '0 auto',
             padding: '36px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.8)'
+            background: '#ffffff',
+            border: '1.5px solid rgba(236, 72, 153, 0.22)',
+            boxShadow: '0 25px 60px -15px rgba(236, 72, 153, 0.15)'
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px', flexWrap: 'wrap', gap: '12px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div className="status-indicator-dot working" />
-              <span style={{ fontSize: '13px', fontWeight: 600, color: '#e4e4e7', fontFamily: 'monospace' }}>
+              <span style={{ fontSize: '13px', fontWeight: 800, color: '#09090b', fontFamily: 'monospace' }}>
                 AUTONOMOUS MULTI-AGENT HANDOFF PIPELINE
               </span>
             </div>
-            <div style={{ fontSize: '12px', color: '#a1a1aa' }}>
+            <div style={{ fontSize: '12px', color: '#64748b', fontWeight: 500 }}>
               Zero manual copying • Zero lost context • Sub-second data handoffs
             </div>
           </div>
@@ -104,7 +111,6 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative' }}>
             {collaborativeNodes.map((node, idx) => {
               const isActive = activeStep === idx;
-              const isPast = activeStep > idx;
 
               return (
                 <div
@@ -114,8 +120,9 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
                     padding: '20px 24px',
                     borderRadius: '16px',
                     cursor: 'pointer',
-                    background: isActive ? 'rgba(168, 85, 247, 0.14)' : 'rgba(255, 255, 255, 0.02)',
-                    border: isActive ? `1.5px solid ${node.color}` : '1px solid rgba(255, 255, 255, 0.06)',
+                    background: isActive ? '#fdf2f8' : '#ffffff',
+                    border: isActive ? `1.5px solid ${node.color}` : '1px solid rgba(236, 72, 153, 0.16)',
+                    boxShadow: isActive ? '0 8px 24px rgba(236, 72, 153, 0.16)' : '0 2px 8px rgba(0,0,0,0.02)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -126,18 +133,22 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
                 >
                   {/* Left info */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div className="blobatar-frame" style={{ width: '46px', height: '46px', borderRadius: '12px', flexShrink: 0 }}>
+                      <Blobatar name={node.identity} animate="hover" size={40} />
+                    </div>
+
                     <div
                       style={{
-                        width: '36px',
-                        height: '36px',
-                        borderRadius: '10px',
-                        background: isActive ? node.color : 'rgba(255, 255, 255, 0.06)',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '8px',
+                        background: isActive ? node.color : '#f3e8ff',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontWeight: 700,
-                        fontSize: '13px',
-                        color: '#ffffff'
+                        fontWeight: 800,
+                        fontSize: '12px',
+                        color: isActive ? '#ffffff' : '#9333ea'
                       }}
                     >
                       0{node.step}
@@ -145,21 +156,22 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
 
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff' }}>
+                        <span style={{ fontSize: '16px', fontWeight: 800, color: '#09090b' }}>
                           {node.name}
                         </span>
                         <span style={{
                           fontSize: '11px',
-                          color: node.color,
-                          background: 'rgba(255,255,255,0.06)',
-                          padding: '1px 7px',
-                          borderRadius: '4px',
-                          fontFamily: 'monospace'
+                          color: '#db2777',
+                          background: 'rgba(236, 72, 153, 0.1)',
+                          padding: '2px 8px',
+                          borderRadius: '6px',
+                          fontFamily: 'monospace',
+                          fontWeight: 700
                         }}>
-                          Identity: {node.identity}
+                          Identity: {node.displayName}
                         </span>
                       </div>
-                      <div style={{ fontSize: '13px', color: '#a1a1aa', marginTop: '3px' }}>
+                      <div style={{ fontSize: '13px', color: '#475569', marginTop: '3px', fontWeight: 500 }}>
                         {node.action}
                       </div>
                     </div>
@@ -167,16 +179,17 @@ export default function MultiAgentWorkforce({ onOpenModal }) {
 
                   {/* Right handoff payload */}
                   <div style={{
-                    background: 'rgba(0, 0, 0, 0.4)',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
-                    padding: '8px 14px',
-                    borderRadius: '8px',
+                    background: isActive ? '#ffffff' : '#faf8f9',
+                    border: '1px solid rgba(236, 72, 153, 0.18)',
+                    padding: '10px 16px',
+                    borderRadius: '10px',
                     maxWidth: '460px',
                     fontSize: '12px',
-                    color: isActive ? '#f3e8ff' : '#71717a',
-                    fontFamily: 'monospace'
+                    color: '#09090b',
+                    fontFamily: 'monospace',
+                    fontWeight: 500
                   }}>
-                    ↳ {node.output}
+                    <strong style={{ color: '#db2777' }}>↳</strong> {node.output}
                   </div>
                 </div>
               );

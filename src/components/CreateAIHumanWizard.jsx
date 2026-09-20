@@ -4,6 +4,7 @@ import {
   User, Briefcase, FileCode2, GitBranch, Rocket, Check, ArrowRight, 
   Sparkles, RefreshCw, CheckCircle2, Shield, Play 
 } from 'lucide-react';
+import { Blobatar } from "@blobatar/react";
 
 const presetTemplates = [
   {
@@ -69,12 +70,12 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
             <span>RAPID DEPLOYMENT ENGINE</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             Create an AI Human in <span className="text-gradient">minutes.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.6 }}>
-            Hire and configure a dedicated digital employee in 4 simple steps. No complex programming or prompt hacking needed.
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6 }}>
+            Hire and configure a dedicated digital employee in 4 simple steps. Watch its Blobatar avatar adapt live as you configure identity.
           </p>
         </div>
 
@@ -85,21 +86,22 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
               key={tpl.role}
               onClick={() => handleSelectTemplate(idx)}
               style={{
-                background: selectedTemplate === idx ? 'rgba(168, 85, 247, 0.2)' : 'rgba(255, 255, 255, 0.03)',
-                border: selectedTemplate === idx ? '1px solid rgba(168, 85, 247, 0.6)' : '1px solid rgba(255, 255, 255, 0.08)',
-                color: selectedTemplate === idx ? '#ffffff' : '#a1a1aa',
+                background: selectedTemplate === idx ? 'linear-gradient(135deg, #fdf2f8, #fce7f3)' : '#ffffff',
+                border: selectedTemplate === idx ? '1.5px solid #ec4899' : '1px solid rgba(236, 72, 153, 0.2)',
+                color: selectedTemplate === idx ? '#db2777' : '#475569',
                 padding: '10px 18px',
                 borderRadius: '9999px',
                 fontSize: '13px',
-                fontWeight: 600,
+                fontWeight: 700,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
+                boxShadow: selectedTemplate === idx ? '0 4px 14px rgba(236, 72, 153, 0.15)' : '0 2px 8px rgba(0,0,0,0.02)',
                 transition: 'all 0.2s'
               }}
             >
-              <Sparkles size={14} color={selectedTemplate === idx ? '#ec4899' : '#71717a'} />
+              <Sparkles size={14} color={selectedTemplate === idx ? '#ec4899' : '#94a3b8'} />
               <span>Preset: {tpl.role} ({tpl.name})</span>
             </button>
           ))}
@@ -109,11 +111,12 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
         <div
           className="cyber-card"
           style={{
-            maxWidth: '1040px',
+            maxWidth: '1060px',
             margin: '0 auto',
             overflow: 'hidden',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.8)'
+            border: '1.5px solid rgba(236, 72, 153, 0.25)',
+            boxShadow: '0 25px 60px -15px rgba(236, 72, 153, 0.18)',
+            background: '#ffffff'
           }}
         >
           {/* Step Navigation Tabs */}
@@ -121,8 +124,8 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              background: 'rgba(10, 10, 16, 0.95)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+              background: '#fdf2f8',
+              borderBottom: '1px solid rgba(236, 72, 153, 0.15)'
             }}
           >
             {[
@@ -142,10 +145,10 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
                   onClick={() => setActiveStep(stepNumber)}
                   style={{
                     padding: '18px 20px',
-                    borderRight: idx < 3 ? '1px solid rgba(255, 255, 255, 0.06)' : 'none',
+                    borderRight: idx < 3 ? '1px solid rgba(236, 72, 153, 0.12)' : 'none',
                     cursor: 'pointer',
-                    background: isActive ? 'rgba(168, 85, 247, 0.12)' : 'transparent',
-                    borderBottom: isActive ? '2px solid #ec4899' : '2px solid transparent',
+                    background: isActive ? '#ffffff' : 'transparent',
+                    borderBottom: isActive ? '3px solid #ec4899' : '3px solid transparent',
                     transition: 'all 0.2s',
                     textAlign: 'left'
                   }}
@@ -154,244 +157,291 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
                     <span style={{
                       fontSize: '11px',
                       fontWeight: 800,
-                      color: isActive ? '#ec4899' : isPast ? '#10b981' : '#71717a',
+                      color: isActive ? '#ec4899' : isPast ? '#059669' : '#94a3b8',
                       fontFamily: 'monospace'
                     }}>
                       STEP {step.num}
                     </span>
-                    {isPast && <Check size={12} color="#10b981" />}
+                    {isPast && <Check size={12} color="#059669" />}
                   </div>
-                  <div style={{ fontSize: '15px', fontWeight: 700, color: isActive ? '#ffffff' : '#d4d4d8', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <StepIcon size={15} color={isActive ? '#a855f7' : '#a1a1aa'} />
+                  <div style={{ fontSize: '15px', fontWeight: 800, color: isActive ? '#09090b' : '#64748b', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <StepIcon size={15} color={isActive ? '#ec4899' : '#94a3b8'} />
                     <span>{step.title}</span>
                   </div>
-                  <div style={{ fontSize: '12px', color: '#71717a' }}>{step.sub}</div>
+                  <div style={{ fontSize: '12px', color: '#64748b' }}>{step.sub}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Interactive Step Content Area */}
-          <div style={{ padding: '36px 40px', background: 'rgba(5, 5, 8, 0.95)' }}>
-            <AnimatePresence mode="wait">
-              {activeStep === 1 && (
-                <motion.div
-                  key="step1"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <div style={{ marginBottom: '24px' }}>
-                    <span style={{ fontSize: '12px', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
-                      Step 01 — Identity
-                    </span>
-                    <h3 style={{ fontSize: '26px', color: '#ffffff', marginTop: '6px', marginBottom: '8px' }}>
-                      Give your AI Human an identity.
-                    </h3>
-                    <p style={{ color: '#a1a1aa', fontSize: '15px' }}>
-                      Give your digital employee a recognizable human name, personal tone, and internal avatar for team collaboration.
-                    </p>
-                  </div>
-
-                  <div style={{ maxWidth: '520px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#d4d4d8', marginBottom: '8px', fontWeight: 600 }}>
-                      Digital Employee Name
-                    </label>
-                    <input
-                      type="text"
-                      className="input-field"
-                      value={customName}
-                      onChange={(e) => setCustomName(e.target.value)}
-                      placeholder="e.g. Alex"
-                      style={{ fontSize: '16px', fontWeight: 500 }}
-                    />
-                    <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
-                      {['Alex', 'Maya', 'Elena', 'Ethan', 'David', 'Jordan'].map((preset) => (
-                        <button
-                          key={preset}
-                          type="button"
-                          onClick={() => setCustomName(preset)}
-                          style={{
-                            background: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderRadius: '6px',
-                            color: '#d4d4d8',
-                            padding: '4px 10px',
-                            fontSize: '12px',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          {preset}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {activeStep === 2 && (
-                <motion.div
-                  key="step2"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <div style={{ marginBottom: '24px' }}>
-                    <span style={{ fontSize: '12px', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
-                      Step 02 — Role & Responsibilities
-                    </span>
-                    <h3 style={{ fontSize: '26px', color: '#ffffff', marginTop: '6px', marginBottom: '8px' }}>
-                      Define what the AI Human is responsible for.
-                    </h3>
-                    <p style={{ color: '#a1a1aa', fontSize: '15px' }}>
-                      Specify the business title, department, and operational KPI accountability.
-                    </p>
-                  </div>
-
-                  <div style={{ maxWidth: '520px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#d4d4d8', marginBottom: '8px', fontWeight: 600 }}>
-                      Operational Role Title
-                    </label>
-                    <input
-                      type="text"
-                      className="input-field"
-                      value={customRole}
-                      onChange={(e) => setCustomRole(e.target.value)}
-                      placeholder="e.g. AI Sales Executive"
-                      style={{ fontSize: '16px', fontWeight: 500 }}
-                    />
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '4px' }}>
-                      {[
-                        'AI Sales Executive',
-                        'AI Support Executive',
-                        'AI Operations Manager',
-                        'AI Research Analyst',
-                        'AI Finance Assistant',
-                        'AI HR Specialist'
-                      ].map((role) => (
-                        <button
-                          key={role}
-                          type="button"
-                          onClick={() => setCustomRole(role)}
-                          style={{
-                            background: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            borderRadius: '6px',
-                            color: '#d4d4d8',
-                            padding: '4px 10px',
-                            fontSize: '12px',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          {role}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {activeStep === 3 && (
-                <motion.div
-                  key="step3"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <div style={{ marginBottom: '24px' }}>
-                    <span style={{ fontSize: '12px', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
-                      Step 03 — Operational Instructions
-                    </span>
-                    <h3 style={{ fontSize: '26px', color: '#ffffff', marginTop: '6px', marginBottom: '8px' }}>
-                      Describe how it should work.
-                    </h3>
-                    <p style={{ color: '#a1a1aa', fontSize: '15px' }}>
-                      Define your company SOPs, execution guidelines, tone of voice, and escalation protocols.
-                    </p>
-                  </div>
-
-                  <div style={{ maxWidth: '680px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#d4d4d8', marginBottom: '8px', fontWeight: 600 }}>
-                      Business Rules & Execution Directives
-                    </label>
-                    <textarea
-                      rows={4}
-                      className="input-field"
-                      value={customInstructions}
-                      onChange={(e) => setCustomInstructions(e.target.value)}
-                      style={{ fontSize: '14px', lineHeight: 1.6, resize: 'vertical' }}
-                    />
-                  </div>
-                </motion.div>
-              )}
-
-              {activeStep === 4 && (
-                <motion.div
-                  key="step4"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <div style={{ marginBottom: '24px' }}>
-                    <span style={{ fontSize: '12px', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
-                      Step 04 — Workflow & Integrations
-                    </span>
-                    <h3 style={{ fontSize: '26px', color: '#ffffff', marginTop: '6px', marginBottom: '8px' }}>
-                      Connect the steps, tools, triggers, and actions.
-                    </h3>
-                    <p style={{ color: '#a1a1aa', fontSize: '15px' }}>
-                      Bind live enterprise APIs so your AI Human can read data, take actions, and post results.
-                    </p>
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '18px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                      <div style={{ fontSize: '12px', color: '#ec4899', fontWeight: 700, textTransform: 'uppercase', marginBottom: '8px' }}>
-                        Autonomous Trigger
+          <div style={{ padding: '36px 40px', background: '#ffffff' }}>
+            <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              {/* Left Form Panel */}
+              <div style={{ flex: 1, minWidth: '300px' }}>
+                <AnimatePresence mode="wait">
+                  {activeStep === 1 && (
+                    <motion.div
+                      key="step1"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                    >
+                      <div style={{ marginBottom: '24px' }}>
+                        <span style={{ fontSize: '12px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800 }}>
+                          Step 01 — Identity
+                        </span>
+                        <h3 style={{ fontSize: '26px', color: '#09090b', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>
+                          Give your AI Human an identity.
+                        </h3>
+                        <p style={{ color: '#475569', fontSize: '15px' }}>
+                          Give your digital employee a recognizable human name. Its unique geometric Blobatar generates instantly.
+                        </p>
                       </div>
-                      <div style={{ fontSize: '14px', color: '#ffffff', fontFamily: 'monospace' }}>
-                        {currentTpl.trigger}
-                      </div>
-                    </div>
 
-                    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '18px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                      <div style={{ fontSize: '12px', color: '#a855f7', fontWeight: 700, textTransform: 'uppercase', marginBottom: '8px' }}>
-                        Authorized Enterprise Tools
+                      <div style={{ maxWidth: '520px' }}>
+                        <label style={{ display: 'block', fontSize: '13px', color: '#09090b', marginBottom: '8px', fontWeight: 700 }}>
+                          Digital Employee Name
+                        </label>
+                        <input
+                          type="text"
+                          className="input-field"
+                          value={customName}
+                          onChange={(e) => setCustomName(e.target.value)}
+                          placeholder="e.g. Alex"
+                          style={{ fontSize: '16px', fontWeight: 600 }}
+                        />
+                        <div style={{ display: 'flex', gap: '10px', marginTop: '6px', flexWrap: 'wrap' }}>
+                          {['Alex', 'Maya', 'Elena', 'Ethan', 'David', 'Jordan', 'Sophia', 'Christian'].map((preset) => (
+                            <button
+                              key={preset}
+                              type="button"
+                              onClick={() => setCustomName(preset)}
+                              style={{
+                                background: customName === preset ? '#fdf2f8' : '#faf8f9',
+                                border: customName === preset ? '1px solid #ec4899' : '1px solid rgba(236, 72, 153, 0.2)',
+                                borderRadius: '8px',
+                                color: customName === preset ? '#db2777' : '#475569',
+                                padding: '5px 12px',
+                                fontSize: '12px',
+                                fontWeight: 600,
+                                cursor: 'pointer'
+                              }}
+                            >
+                              {preset}
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                        {currentTpl.tools.map((tool) => (
-                          <span key={tool} style={{
-                            fontSize: '11px',
-                            background: 'rgba(168, 85, 247, 0.15)',
-                            border: '1px solid rgba(168, 85, 247, 0.3)',
-                            padding: '3px 8px',
-                            borderRadius: '6px',
-                            color: '#e4e4e7'
-                          }}>
-                            {tool}
-                          </span>
-                        ))}
+                    </motion.div>
+                  )}
+
+                  {activeStep === 2 && (
+                    <motion.div
+                      key="step2"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                    >
+                      <div style={{ marginBottom: '24px' }}>
+                        <span style={{ fontSize: '12px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800 }}>
+                          Step 02 — Role & Responsibilities
+                        </span>
+                        <h3 style={{ fontSize: '26px', color: '#09090b', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>
+                          Define what the AI Human is responsible for.
+                        </h3>
+                        <p style={{ color: '#475569', fontSize: '15px' }}>
+                          Specify the operational role title and department objectives.
+                        </p>
                       </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+
+                      <div style={{ maxWidth: '520px' }}>
+                        <label style={{ display: 'block', fontSize: '13px', color: '#09090b', marginBottom: '8px', fontWeight: 700 }}>
+                          Operational Role Title
+                        </label>
+                        <input
+                          type="text"
+                          className="input-field"
+                          value={customRole}
+                          onChange={(e) => setCustomRole(e.target.value)}
+                          placeholder="e.g. AI Sales Executive"
+                          style={{ fontSize: '16px', fontWeight: 600 }}
+                        />
+                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '6px' }}>
+                          {[
+                            'AI Sales Executive',
+                            'AI Support Executive',
+                            'AI Operations Manager',
+                            'AI Research Analyst',
+                            'AI Finance Assistant',
+                            'AI HR Specialist'
+                          ].map((role) => (
+                            <button
+                              key={role}
+                              type="button"
+                              onClick={() => setCustomRole(role)}
+                              style={{
+                                background: customRole === role ? '#fdf2f8' : '#faf8f9',
+                                border: customRole === role ? '1px solid #ec4899' : '1px solid rgba(236, 72, 153, 0.2)',
+                                borderRadius: '8px',
+                                color: customRole === role ? '#db2777' : '#475569',
+                                padding: '5px 12px',
+                                fontSize: '12px',
+                                fontWeight: 600,
+                                cursor: 'pointer'
+                              }}
+                            >
+                              {role}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeStep === 3 && (
+                    <motion.div
+                      key="step3"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                    >
+                      <div style={{ marginBottom: '24px' }}>
+                        <span style={{ fontSize: '12px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800 }}>
+                          Step 03 — Operational Instructions
+                        </span>
+                        <h3 style={{ fontSize: '26px', color: '#09090b', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>
+                          Describe how it should work.
+                        </h3>
+                        <p style={{ color: '#475569', fontSize: '15px' }}>
+                          Define your company SOPs, execution guidelines, and fallback escalation gates.
+                        </p>
+                      </div>
+
+                      <div style={{ maxWidth: '680px' }}>
+                        <label style={{ display: 'block', fontSize: '13px', color: '#09090b', marginBottom: '8px', fontWeight: 700 }}>
+                          Business Rules & Execution Directives
+                        </label>
+                        <textarea
+                          rows={4}
+                          className="input-field"
+                          value={customInstructions}
+                          onChange={(e) => setCustomInstructions(e.target.value)}
+                          style={{ fontSize: '14px', lineHeight: 1.6, resize: 'vertical' }}
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeStep === 4 && (
+                    <motion.div
+                      key="step4"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                    >
+                      <div style={{ marginBottom: '24px' }}>
+                        <span style={{ fontSize: '12px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800 }}>
+                          Step 04 — Workflow & Integrations
+                        </span>
+                        <h3 style={{ fontSize: '26px', color: '#09090b', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>
+                          Connect the steps, tools, triggers, and actions.
+                        </h3>
+                        <p style={{ color: '#475569', fontSize: '15px' }}>
+                          Bind live enterprise APIs so your AI Human can read data, take actions, and post results.
+                        </p>
+                      </div>
+
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+                        <div style={{ background: '#faf8f9', padding: '18px', borderRadius: '14px', border: '1px solid rgba(236, 72, 153, 0.15)' }}>
+                          <div style={{ fontSize: '11px', color: '#db2777', fontWeight: 800, textTransform: 'uppercase', marginBottom: '6px' }}>
+                            Autonomous Trigger
+                          </div>
+                          <div style={{ fontSize: '13px', color: '#09090b', fontFamily: 'monospace', fontWeight: 600 }}>
+                            {currentTpl.trigger}
+                          </div>
+                        </div>
+
+                        <div style={{ background: '#faf8f9', padding: '18px', borderRadius: '14px', border: '1px solid rgba(236, 72, 153, 0.15)' }}>
+                          <div style={{ fontSize: '11px', color: '#9333ea', fontWeight: 800, textTransform: 'uppercase', marginBottom: '6px' }}>
+                            Authorized Enterprise Tools
+                          </div>
+                          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                            {currentTpl.tools.map((tool) => (
+                              <span key={tool} style={{
+                                fontSize: '11px',
+                                background: '#ffffff',
+                                border: '1px solid rgba(236, 72, 153, 0.25)',
+                                padding: '3px 8px',
+                                borderRadius: '6px',
+                                color: '#09090b',
+                                fontWeight: 600
+                              }}>
+                                {tool}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Right Live Avatar Badge Card */}
+              <div
+                style={{
+                  width: '260px',
+                  background: 'linear-gradient(135deg, #fdf2f8, #faf5ff)',
+                  border: '1.5px solid rgba(236, 72, 153, 0.25)',
+                  borderRadius: '18px',
+                  padding: '24px 20px',
+                  textAlign: 'center',
+                  boxShadow: '0 8px 25px rgba(236, 72, 153, 0.1)'
+                }}
+              >
+                <div style={{ fontSize: '11px', color: '#db2777', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '14px' }}>
+                  Live Blobatar Preview
+                </div>
+
+                <div className="blobatar-frame" style={{ width: '84px', height: '84px', margin: '0 auto 14px', padding: '6px' }}>
+                  <Blobatar name={customName || 'Alex'} animate="hover" size={74} />
+                </div>
+
+                <div style={{ fontSize: '17px', fontWeight: 800, color: '#09090b' }}>
+                  {customName || 'Alex'}
+                </div>
+                <div style={{ fontSize: '12px', color: '#ec4899', fontWeight: 600, marginTop: '2px' }}>
+                  {customRole}
+                </div>
+
+                <div style={{
+                  marginTop: '16px',
+                  paddingTop: '12px',
+                  borderTop: '1px solid rgba(236, 72, 153, 0.18)',
+                  fontSize: '11px',
+                  color: '#64748b'
+                }}>
+                  Hover avatar to see interactive motion & breathing
+                </div>
+              </div>
+            </div>
 
             {/* Bottom Actions: Next Step / Deploy */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '36px', paddingTop: '24px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '36px', paddingTop: '24px', borderTop: '1px solid rgba(236, 72, 153, 0.15)' }}>
               <div>
                 {activeStep > 1 && (
                   <button
                     onClick={() => setActiveStep(activeStep - 1)}
                     style={{
-                      background: 'transparent',
-                      border: '1px solid rgba(255,255,255,0.15)',
-                      color: '#a1a1aa',
+                      background: '#ffffff',
+                      border: '1px solid rgba(236, 72, 153, 0.25)',
+                      color: '#475569',
                       padding: '10px 20px',
                       borderRadius: '8px',
                       cursor: 'pointer',
-                      fontSize: '14px'
+                      fontSize: '14px',
+                      fontWeight: 600
                     }}
                   >
                     Back
@@ -419,7 +469,7 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
                       padding: '12px 28px',
                       fontSize: '15px',
                       background: 'linear-gradient(135deg, #10b981, #059669)',
-                      boxShadow: '0 0 25px rgba(16, 185, 129, 0.4)'
+                      boxShadow: '0 0 25px rgba(16, 185, 129, 0.35)'
                     }}
                   >
                     {isDeploying ? (
@@ -450,9 +500,9 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
                 animate={{ opacity: 1, y: 0 }}
                 style={{
                   marginTop: '20px',
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  borderRadius: '12px',
+                  background: '#f0fdf4',
+                  border: '1.5px solid rgba(16, 185, 129, 0.35)',
+                  borderRadius: '14px',
                   padding: '16px 20px',
                   display: 'flex',
                   alignItems: 'center',
@@ -464,10 +514,10 @@ export default function CreateAIHumanWizard({ onOpenModal }) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }} />
                   <div>
-                    <span style={{ color: '#ffffff', fontWeight: 700, fontSize: '14px' }}>
+                    <span style={{ color: '#09090b', fontWeight: 800, fontSize: '14px' }}>
                       {customName} ({customRole}) is now active!
                     </span>
-                    <div style={{ fontSize: '12px', color: '#a1a1aa' }}>
+                    <div style={{ fontSize: '12px', color: '#475569' }}>
                       Connected to 5 tools. Ready to execute live production workflows.
                     </div>
                   </div>

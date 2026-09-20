@@ -44,12 +44,12 @@ export default function WhySaadhyam({ onOpenModal }) {
             <span>THE COMPETITIVE EDGE</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             AI isn’t the advantage.{' '}
             <span className="text-gradient">Your AI workforce is.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6 }}>
             Anyone can access raw AI models. The real strategic moat is the coordinated digital workforce you train, deploy, and govern inside your business.
           </p>
         </div>
@@ -74,7 +74,10 @@ export default function WhySaadhyam({ onOpenModal }) {
                   padding: '32px 28px',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  background: '#ffffff',
+                  border: '1px solid rgba(236, 72, 153, 0.16)',
+                  boxShadow: '0 6px 20px rgba(236, 72, 153, 0.06)'
                 }}
               >
                 <div>
@@ -83,33 +86,33 @@ export default function WhySaadhyam({ onOpenModal }) {
                       width: '46px',
                       height: '46px',
                       borderRadius: '12px',
-                      background: 'rgba(255,255,255,0.04)',
+                      background: 'rgba(236, 72, 153, 0.1)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       color: pillar.color,
                       marginBottom: '20px',
-                      border: `1px solid ${pillar.color}40`
+                      border: `1.5px solid ${pillar.color}40`
                     }}
                   >
                     <Icon size={22} />
                   </div>
 
-                  <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff', marginBottom: '10px' }}>
+                  <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#09090b', marginBottom: '10px' }}>
                     {pillar.title}
                   </h3>
 
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#d8b4fe', marginBottom: '12px' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#db2777', marginBottom: '12px' }}>
                     {pillar.summary}
                   </div>
 
-                  <p style={{ fontSize: '14px', color: '#a1a1aa', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.5, fontWeight: 500 }}>
                     {pillar.description}
                   </p>
                 </div>
 
-                <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ fontSize: '12px', color: pillar.color, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid rgba(236, 72, 153, 0.12)' }}>
+                  <div style={{ fontSize: '12px', color: pillar.color, display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 700 }}>
                     <CheckCircle2 size={13} /> Enterprise Standard
                   </div>
                 </div>

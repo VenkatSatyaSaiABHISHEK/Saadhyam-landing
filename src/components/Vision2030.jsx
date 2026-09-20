@@ -25,11 +25,11 @@ export default function Vision2030({ onOpenModal }) {
             <span>VISION 2030</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '20px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '20px', color: '#09090b' }}>
             Imagine Monday morning, <span className="text-gradient">9:00 AM.</span>
           </h2>
 
-          <p style={{ fontSize: '19px', color: '#a1a1aa', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6 }}>
             No one is manually assigning every single task. No unread backlogs. The AI workforce is already executing work with precision before the morning standup even starts.
           </p>
         </div>
@@ -41,11 +41,12 @@ export default function Vision2030({ onOpenModal }) {
             maxWidth: '920px',
             margin: '0 auto 40px',
             padding: '36px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.8)'
+            background: '#ffffff',
+            border: '1.5px solid rgba(236, 72, 153, 0.22)',
+            boxShadow: '0 25px 60px -15px rgba(236, 72, 153, 0.15)'
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             {mondaySchedule.map((item, idx) => (
               <div
                 key={idx}
@@ -55,8 +56,9 @@ export default function Vision2030({ onOpenModal }) {
                   justifyContent: 'space-between',
                   padding: '14px 18px',
                   borderRadius: '12px',
-                  background: idx <= 1 ? 'rgba(168, 85, 247, 0.12)' : 'rgba(255, 255, 255, 0.02)',
-                  border: idx <= 1 ? '1px solid rgba(168, 85, 247, 0.35)' : '1px solid rgba(255, 255, 255, 0.05)',
+                  background: idx <= 1 ? '#fdf2f8' : '#ffffff',
+                  border: idx <= 1 ? '1.5px solid rgba(236, 72, 153, 0.3)' : '1px solid rgba(236, 72, 153, 0.14)',
+                  boxShadow: idx <= 1 ? '0 4px 14px rgba(236, 72, 153, 0.1)' : '0 2px 6px rgba(0,0,0,0.02)',
                   flexWrap: 'wrap',
                   gap: '12px'
                 }}
@@ -65,30 +67,31 @@ export default function Vision2030({ onOpenModal }) {
                   <span style={{
                     fontSize: '12px',
                     fontFamily: 'monospace',
-                    color: idx <= 1 ? '#d8b4fe' : '#a1a1aa',
-                    background: 'rgba(255,255,255,0.05)',
-                    padding: '3px 8px',
+                    color: idx <= 1 ? '#db2777' : '#64748b',
+                    background: idx <= 1 ? 'rgba(236, 72, 153, 0.12)' : '#f1f5f9',
+                    padding: '4px 8px',
                     borderRadius: '6px',
-                    fontWeight: 600
+                    fontWeight: 700
                   }}>
                     {item.time}
                   </span>
-                  <span style={{ fontSize: '14px', color: idx <= 1 ? '#ffffff' : '#e4e4e7', fontWeight: idx <= 1 ? 700 : 500 }}>
+                  <span style={{ fontSize: '14px', color: '#09090b', fontWeight: idx <= 1 ? 700 : 500 }}>
                     {item.task}
                   </span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '11px', color: '#c084fc', fontFamily: 'monospace' }}>
+                  <span style={{ fontSize: '12px', color: '#db2777', fontFamily: 'monospace', fontWeight: 700 }}>
                     {item.role}
                   </span>
                   <span style={{
                     fontSize: '11px',
-                    color: '#34d399',
-                    background: 'rgba(16, 185, 129, 0.15)',
-                    padding: '2px 7px',
-                    borderRadius: '4px',
-                    fontWeight: 600
+                    color: '#059669',
+                    background: 'rgba(16, 185, 129, 0.1)',
+                    padding: '3px 8px',
+                    borderRadius: '6px',
+                    fontWeight: 700,
+                    border: '1px solid rgba(16, 185, 129, 0.25)'
                   }}>
                     {item.status}
                   </span>
@@ -101,12 +104,12 @@ export default function Vision2030({ onOpenModal }) {
             marginTop: '32px',
             textAlign: 'center',
             paddingTop: '24px',
-            borderTop: '1px solid rgba(255,255,255,0.08)'
+            borderTop: '1px solid rgba(236, 72, 153, 0.14)'
           }}>
-            <div style={{ fontSize: '24px', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: '8px' }}>
+            <div style={{ fontSize: '24px', fontWeight: 900, color: '#09090b', letterSpacing: '-0.02em', marginBottom: '8px' }}>
               This is the future Saadhyam is building.
             </div>
-            <p style={{ fontSize: '15px', color: '#a1a1aa' }}>
+            <p style={{ fontSize: '15px', color: '#475569', fontWeight: 500 }}>
               Transform your business from a reactive task-chasing team to an empowered human leadership core backed by dozens of digital employees.
             </p>
           </div>

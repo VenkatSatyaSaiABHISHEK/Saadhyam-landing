@@ -69,12 +69,12 @@ export default function IntegrationsSection({ onOpenModal }) {
             <span>UNIVERSAL SYSTEM CONNECTIVITY</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             Your AI Humans work where{' '}
             <span className="text-gradient">your business works.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6 }}>
             Connect the systems your business already uses and give each AI Human the precise tools, credentials, and permissions required to perform its role safely.
           </p>
         </div>
@@ -99,24 +99,27 @@ export default function IntegrationsSection({ onOpenModal }) {
                   padding: '24px',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  background: '#ffffff',
+                  border: '1px solid rgba(236, 72, 153, 0.16)',
+                  boxShadow: '0 4px 15px rgba(236, 72, 153, 0.05)'
                 }}
               >
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                     <div style={{
-                      width: '36px',
-                      height: '36px',
+                      width: '38px',
+                      height: '38px',
                       borderRadius: '10px',
-                      background: 'rgba(168, 85, 247, 0.15)',
+                      background: 'rgba(236, 72, 153, 0.1)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#c084fc'
+                      color: '#db2777'
                     }}>
                       <CatIcon size={18} />
                     </div>
-                    <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#ffffff' }}>
+                    <h3 style={{ fontSize: '17px', fontWeight: 800, color: '#09090b' }}>
                       {cat.title}
                     </h3>
                   </div>
@@ -127,11 +130,12 @@ export default function IntegrationsSection({ onOpenModal }) {
                         key={tool}
                         style={{
                           fontSize: '12px',
-                          background: 'rgba(255,255,255,0.04)',
-                          border: '1px solid rgba(255,255,255,0.08)',
+                          background: '#fdf2f8',
+                          border: '1px solid rgba(236, 72, 153, 0.16)',
                           padding: '4px 10px',
                           borderRadius: '6px',
-                          color: '#e4e4e7'
+                          color: '#09090b',
+                          fontWeight: 500
                         }}
                       >
                         {tool}
@@ -140,8 +144,8 @@ export default function IntegrationsSection({ onOpenModal }) {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '18px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.05)', fontSize: '11px', color: '#10b981', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CheckCircle2 size={12} /> Real-time bi-directional sync
+                <div style={{ marginTop: '18px', paddingTop: '12px', borderTop: '1px solid rgba(236, 72, 153, 0.12)', fontSize: '12px', color: '#059669', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
+                  <CheckCircle2 size={13} /> Real-time bi-directional sync
                 </div>
               </div>
             );
@@ -153,22 +157,23 @@ export default function IntegrationsSection({ onOpenModal }) {
           style={{
             maxWidth: '900px',
             margin: '0 auto',
-            background: 'rgba(168, 85, 247, 0.08)',
-            border: '1px solid rgba(168, 85, 247, 0.25)',
+            background: 'linear-gradient(135deg, #fdf2f8, #fce7f3)',
+            border: '1.5px solid rgba(236, 72, 153, 0.25)',
             borderRadius: '16px',
-            padding: '20px 28px',
+            padding: '24px 32px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '16px'
+            gap: '16px',
+            boxShadow: '0 8px 24px rgba(236, 72, 153, 0.12)'
           }}
         >
           <div>
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff' }}>
+            <div style={{ fontSize: '16px', fontWeight: 800, color: '#09090b' }}>
               Have proprietary internal software or bespoke database tables?
             </div>
-            <div style={{ fontSize: '13px', color: '#a1a1aa', marginTop: '2px' }}>
+            <div style={{ fontSize: '13px', color: '#475569', marginTop: '4px', fontWeight: 500 }}>
               AI Humans can connect to any REST, GraphQL, or webhook endpoint with OAuth 2.0 and API keys.
             </div>
           </div>
@@ -176,7 +181,7 @@ export default function IntegrationsSection({ onOpenModal }) {
           <button
             onClick={onOpenModal}
             className="btn-primary"
-            style={{ padding: '10px 20px', fontSize: '13px', borderRadius: '8px' }}
+            style={{ padding: '10px 22px', fontSize: '13px', borderRadius: '8px' }}
           >
             Request Custom Integration
           </button>

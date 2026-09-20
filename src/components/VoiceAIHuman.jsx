@@ -4,6 +4,7 @@ import {
   Mic, MicOff, PhoneCall, PhoneOff, Volume2, Sparkles, CheckCircle2, 
   Calendar, Clock, Check, ArrowRight, Play, Pause, Zap 
 } from 'lucide-react';
+import { Blobatar } from '@blobatar/react';
 
 const transcriptScript = [
   { speaker: 'AI', text: "Hello! This is Sophia from Saadhyam. Am I speaking with Alex regarding the AI workforce rollout for your sales team?", time: '0:03' },
@@ -64,12 +65,12 @@ export default function VoiceAIHuman({ onOpenModal }) {
             <span>NATURAL CONVERSATIONAL VOICE</span>
           </div>
 
-          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '46px', lineHeight: 1.15, marginBottom: '18px', color: '#09090b' }}>
             Give your AI Humans a{' '}
             <span className="text-gradient">voice.</span>
           </h2>
 
-          <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.6, marginBottom: '24px' }}>
+          <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.6, marginBottom: '24px' }}>
             AI Humans can communicate through natural voice, enabling businesses to deploy digital employees capable of handling real spoken conversations with zero robotic awkwardness.
           </p>
 
@@ -78,13 +79,14 @@ export default function VoiceAIHuman({ onOpenModal }) {
               <span
                 key={uc}
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: '#ffffff',
+                  border: '1px solid rgba(236, 72, 153, 0.2)',
                   padding: '6px 14px',
                   borderRadius: '9999px',
                   fontSize: '12px',
-                  color: '#d4d4d8',
-                  fontWeight: 500
+                  color: '#09090b',
+                  fontWeight: 600,
+                  boxShadow: '0 2px 8px rgba(236, 72, 153, 0.08)'
                 }}
               >
                 ✦ {uc}
@@ -99,17 +101,18 @@ export default function VoiceAIHuman({ onOpenModal }) {
           style={{
             maxWidth: '960px',
             margin: '0 auto',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            background: '#ffffff',
+            border: '1.5px solid rgba(236, 72, 153, 0.22)',
             overflow: 'hidden',
-            boxShadow: '0 30px 80px -20px rgba(0, 0, 0, 0.8)'
+            boxShadow: '0 25px 60px -15px rgba(236, 72, 153, 0.15)'
           }}
         >
           {/* Top Call Status Bar */}
           <div
             style={{
-              background: 'rgba(10, 10, 16, 0.95)',
-              padding: '16px 24px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'linear-gradient(135deg, #fdf2f8, #fce7f3)',
+              padding: '18px 24px',
+              borderBottom: '1px solid rgba(236, 72, 153, 0.18)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -119,17 +122,9 @@ export default function VoiceAIHuman({ onOpenModal }) {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
               <div style={{ position: 'relative' }}>
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
-                  alt="Sophia Voice AI"
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '12px',
-                    objectFit: 'cover',
-                    border: '1.5px solid #a855f7'
-                  }}
-                />
+                <div className="blobatar-frame" style={{ width: '48px', height: '48px', borderRadius: '14px' }}>
+                  <Blobatar name="SophiaVoice" animate="hover" size={42} />
+                </div>
                 <div style={{
                   position: 'absolute',
                   bottom: -2,
@@ -137,19 +132,19 @@ export default function VoiceAIHuman({ onOpenModal }) {
                   width: '12px',
                   height: '12px',
                   borderRadius: '50%',
-                  background: isCalling ? '#10b981' : '#71717a',
-                  border: '2px solid #050508'
+                  background: isCalling ? '#10b981' : '#a1a1aa',
+                  border: '2px solid #ffffff'
                 }} />
               </div>
 
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff' }}>Sophia</span>
-                  <span style={{ fontSize: '11px', color: '#c084fc', background: 'rgba(168,85,247,0.15)', padding: '2px 6px', borderRadius: '4px' }}>
+                  <span style={{ fontSize: '16px', fontWeight: 800, color: '#09090b' }}>Sophia</span>
+                  <span style={{ fontSize: '11px', color: '#db2777', background: 'rgba(236, 72, 153, 0.12)', padding: '2px 8px', borderRadius: '6px', fontWeight: 700 }}>
                     Senior Voice Qualifier
                   </span>
                 </div>
-                <div style={{ fontSize: '12px', color: '#a1a1aa' }}>
+                <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
                   Latency: 280ms • Full Duplex Audio • Context-aware
                 </div>
               </div>
@@ -158,10 +153,10 @@ export default function VoiceAIHuman({ onOpenModal }) {
             {/* Right: Call state */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: '11px', color: '#71717a', textTransform: 'uppercase', fontFamily: 'monospace' }}>
+                <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', fontFamily: 'monospace', fontWeight: 600 }}>
                   Call Duration
                 </div>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff', fontFamily: 'monospace' }}>
+                <div style={{ fontSize: '15px', fontWeight: 800, color: '#09090b', fontFamily: 'monospace' }}>
                   {formatDuration(callDuration)}
                 </div>
               </div>
@@ -169,18 +164,18 @@ export default function VoiceAIHuman({ onOpenModal }) {
               <button
                 onClick={() => setIsCalling(!isCalling)}
                 style={{
-                  background: isCalling ? '#ef4444' : 'linear-gradient(135deg, #10b981, #059669)',
+                  background: isCalling ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 'linear-gradient(135deg, #ec4899, #a855f7)',
                   color: '#ffffff',
                   border: 'none',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
+                  padding: '10px 22px',
+                  borderRadius: '9999px',
                   fontSize: '13px',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: isCalling ? '0 0 20px rgba(239, 68, 68, 0.4)' : '0 0 20px rgba(16, 185, 129, 0.4)'
+                  boxShadow: isCalling ? '0 4px 15px rgba(239, 68, 68, 0.4)' : '0 4px 15px rgba(236, 72, 153, 0.4)'
                 }}
               >
                 {isCalling ? (
@@ -197,12 +192,12 @@ export default function VoiceAIHuman({ onOpenModal }) {
           </div>
 
           {/* Voice Interface Inner Body */}
-          <div style={{ padding: '32px', background: 'rgba(5, 5, 8, 0.95)' }}>
+          <div style={{ padding: '32px', background: '#ffffff' }}>
             {/* Waveform Visualizer */}
             <div
               style={{
-                background: 'rgba(0, 0, 0, 0.5)',
-                border: '1px solid rgba(255, 255, 255, 0.06)',
+                background: '#faf8f9',
+                border: '1px solid rgba(236, 72, 153, 0.16)',
                 borderRadius: '16px',
                 padding: '24px',
                 display: 'flex',
@@ -212,28 +207,28 @@ export default function VoiceAIHuman({ onOpenModal }) {
                 marginBottom: '28px'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', height: '40px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', height: '42px', marginBottom: '14px' }}>
                 {Array.from({ length: 32 }).map((_, i) => (
                   <div
                     key={i}
                     className="wave-bar"
                     style={{
-                      height: isCalling ? `${Math.sin(i * 0.4) * 20 + 20}px` : '4px',
-                      opacity: isCalling ? 0.9 : 0.2,
+                      height: isCalling ? `${Math.sin(i * 0.4) * 20 + 20}px` : '6px',
+                      opacity: isCalling ? 1 : 0.25,
                       animationDuration: `${0.8 + (i % 5) * 0.2}s`
                     }}
                   />
                 ))}
               </div>
 
-              <div style={{ fontSize: '13px', color: isCalling ? '#34d399' : '#71717a', fontFamily: 'monospace' }}>
+              <div style={{ fontSize: '13px', color: isCalling ? '#059669' : '#64748b', fontFamily: 'monospace', fontWeight: 600 }}>
                 {isCalling ? '● LIVE VOICE TRANSMISSION // STEREO PCM 48kHz' : 'Click "Talk to Sophia" above to simulate a live voice conversation'}
               </div>
             </div>
 
             {/* Conversation Transcript Stream */}
             <div style={{ marginBottom: '24px' }}>
-              <div style={{ fontSize: '11px', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, marginBottom: '12px' }}>
+              <div style={{ fontSize: '11px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 800, marginBottom: '12px' }}>
                 Real-Time Voice Transcript
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -243,8 +238,8 @@ export default function VoiceAIHuman({ onOpenModal }) {
                     style={{
                       padding: '12px 16px',
                       borderRadius: '12px',
-                      background: line.speaker === 'AI' ? 'rgba(168, 85, 247, 0.08)' : 'rgba(255, 255, 255, 0.03)',
-                      border: line.speaker === 'AI' ? '1px solid rgba(168, 85, 247, 0.2)' : '1px solid rgba(255, 255, 255, 0.06)',
+                      background: line.speaker === 'AI' ? '#fdf2f8' : '#f8fafc',
+                      border: line.speaker === 'AI' ? '1px solid rgba(236, 72, 153, 0.22)' : '1px solid rgba(0, 0, 0, 0.08)',
                       display: 'flex',
                       gap: '12px',
                       alignItems: 'flex-start'
@@ -253,16 +248,16 @@ export default function VoiceAIHuman({ onOpenModal }) {
                     <span style={{
                       fontSize: '11px',
                       fontWeight: 800,
-                      color: line.speaker === 'AI' ? '#c084fc' : '#60a5fa',
-                      padding: '2px 6px',
+                      color: line.speaker === 'AI' ? '#db2777' : '#2563eb',
+                      padding: '2px 8px',
                       borderRadius: '4px',
-                      background: 'rgba(255,255,255,0.06)',
+                      background: line.speaker === 'AI' ? 'rgba(236, 72, 153, 0.1)' : 'rgba(37, 99, 235, 0.1)',
                       fontFamily: 'monospace',
                       flexShrink: 0
                     }}>
                       {line.speaker}
                     </span>
-                    <span style={{ fontSize: '14px', color: '#e4e4e7', lineHeight: 1.5 }}>
+                    <span style={{ fontSize: '14px', color: '#09090b', lineHeight: 1.5, fontWeight: 500 }}>
                       {line.text}
                     </span>
                   </div>
@@ -272,31 +267,31 @@ export default function VoiceAIHuman({ onOpenModal }) {
 
             {/* Actions Performed & Outcome */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <div style={{ fontSize: '11px', color: '#a855f7', fontWeight: 700, textTransform: 'uppercase', marginBottom: '8px' }}>
+              <div style={{ background: '#faf8f9', padding: '18px', borderRadius: '12px', border: '1px solid rgba(236, 72, 153, 0.16)' }}>
+                <div style={{ fontSize: '11px', color: '#db2777', fontWeight: 800, textTransform: 'uppercase', marginBottom: '10px', letterSpacing: '0.06em' }}>
                   Actions Performed in Call
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: '#d4d4d8' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={14} color="#10b981" />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: '#09090b', fontWeight: 500 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Check size={15} color="#10b981" />
                     <span>Matched ICP Criteria: Enterprise B2B SaaS</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={14} color="#10b981" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Check size={15} color="#10b981" />
                     <span>Dispatched Google Calendar Invite (Thu 2 PM)</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={14} color="#10b981" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Check size={15} color="#10b981" />
                     <span>Logged recording & transcript to Salesforce CRM</span>
                   </div>
                 </div>
               </div>
 
-              <div style={{ background: 'rgba(16, 185, 129, 0.05)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-                <div style={{ fontSize: '11px', color: '#34d399', fontWeight: 700, textTransform: 'uppercase', marginBottom: '8px' }}>
+              <div style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '18px', borderRadius: '12px', border: '1px solid rgba(16, 185, 129, 0.25)' }}>
+                <div style={{ fontSize: '11px', color: '#065f46', fontWeight: 800, textTransform: 'uppercase', marginBottom: '10px', letterSpacing: '0.06em' }}>
                   Call Outcome Summary
                 </div>
-                <div style={{ fontSize: '13px', color: '#e4e4e7', lineHeight: 1.5 }}>
+                <div style={{ fontSize: '13px', color: '#065f46', lineHeight: 1.6, fontWeight: 500 }}>
                   <strong>Status:</strong> Qualified Enterprise Opportunity<br />
                   <strong>Next Step:</strong> AE demo confirmed with team<br />
                   <strong>Sentiment:</strong> Highly Enthusiastic (+0.92)

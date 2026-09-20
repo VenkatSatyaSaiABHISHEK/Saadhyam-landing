@@ -86,10 +86,10 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
               style={{ textAlign: 'center', padding: '40px 0' }}
             >
               <CheckCircle2 size={64} color="#10b981" style={{ margin: '0 auto 20px' }} />
-              <h3 style={{ fontSize: '26px', marginBottom: '10px', color: '#ffffff' }}>
+              <h3 style={{ fontSize: '26px', marginBottom: '10px', color: '#09090b', fontWeight: 800 }}>
                 Your AI Human Request is Received! 🎉
               </h3>
-              <p style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: 1.6 }}>
+              <p style={{ color: '#475569', fontSize: '15px', lineHeight: 1.6, fontWeight: 500 }}>
                 Our workforce engineering team is preparing your custom digital employee sandbox. You will receive an onboarding link within 24 hours.
               </p>
             </motion.div>
@@ -100,22 +100,22 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
                   <Sparkles size={12} />
                   <span>PROVISION DIGITAL EMPLOYEE</span>
                 </div>
-                <h3 style={{ fontSize: '26px', fontWeight: 800, color: '#ffffff', marginBottom: '6px' }}>
+                <h3 style={{ fontSize: '26px', fontWeight: 900, color: '#09090b', marginBottom: '6px' }}>
                   Create Your AI Human
                 </h3>
-                <p style={{ color: '#a1a1aa', fontSize: '14px' }}>
+                <p style={{ color: '#475569', fontSize: '14px', fontWeight: 500 }}>
                   Define your first AI employee. Connect tools, configure workflows, and start executing work automatically.
                 </p>
               </div>
 
               <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: '14px' }}>
-                  <label style={{ display: 'block', fontSize: '12px', color: '#d4d4d8', marginBottom: '6px', fontWeight: 600 }}>
+                  <label style={{ display: 'block', fontSize: '12px', color: '#09090b', marginBottom: '6px', fontWeight: 700 }}>
                     Target AI Human Role
                   </label>
                   <select
                     className="input-field"
-                    style={{ background: 'rgba(20, 20, 25, 0.9)', color: '#ffffff', cursor: 'pointer' }}
+                    style={{ background: '#faf8f9', color: '#09090b', cursor: 'pointer', fontWeight: 500 }}
                     value={formData.aiHumanRole}
                     onChange={(e) => setFormData({ ...formData, aiHumanRole: e.target.value })}
                   >
@@ -131,7 +131,7 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', color: '#d4d4d8', marginBottom: '6px', fontWeight: 600 }}>
+                    <label style={{ display: 'block', fontSize: '12px', color: '#09090b', marginBottom: '6px', fontWeight: 700 }}>
                       Your Full Name *
                     </label>
                     <input
@@ -145,7 +145,7 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', color: '#d4d4d8', marginBottom: '6px', fontWeight: 600 }}>
+                    <label style={{ display: 'block', fontSize: '12px', color: '#09090b', marginBottom: '6px', fontWeight: 700 }}>
                       Company / Organization *
                     </label>
                     <input
@@ -161,7 +161,7 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', color: '#d4d4d8', marginBottom: '6px', fontWeight: 600 }}>
+                    <label style={{ display: 'block', fontSize: '12px', color: '#09090b', marginBottom: '6px', fontWeight: 700 }}>
                       Work Email *
                     </label>
                     <input
@@ -175,7 +175,7 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', color: '#d4d4d8', marginBottom: '6px', fontWeight: 600 }}>
+                    <label style={{ display: 'block', fontSize: '12px', color: '#09090b', marginBottom: '6px', fontWeight: 700 }}>
                       Phone / WhatsApp *
                     </label>
                     <input
@@ -190,7 +190,7 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', color: '#d4d4d8', marginBottom: '6px', fontWeight: 600 }}>
+                  <label style={{ display: 'block', fontSize: '12px', color: '#09090b', marginBottom: '6px', fontWeight: 700 }}>
                     Workflows & Systems to Automate
                   </label>
                   <textarea

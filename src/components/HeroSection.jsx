@@ -4,13 +4,13 @@ import {
   Sparkles, ArrowRight, Play, CheckCircle2, TrendingUp, Cpu, 
   Activity, Shield, Zap, RefreshCw, Layers, Users, PhoneCall, Check, UserCheck
 } from 'lucide-react';
+import { Blobatar } from "@blobatar/react";
 
 const aiHumansRoster = [
   {
     id: 'sales',
     name: 'Alex Rivera',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-    initials: 'AR',
+    blobatarName: 'AlexRivera',
     role: 'AI Sales Executive',
     department: 'Revenue & Growth',
     currentTask: 'Qualifying 42 inbound enterprise leads & drafting proposals',
@@ -23,8 +23,7 @@ const aiHumansRoster = [
   {
     id: 'support',
     name: 'Maya Chen',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
-    initials: 'MC',
+    blobatarName: 'MayaChen',
     role: 'AI Customer Support',
     department: 'Customer Experience',
     currentTask: 'Resolving Tier-2 ticketing queue & SLA monitoring',
@@ -37,8 +36,7 @@ const aiHumansRoster = [
   {
     id: 'ops',
     name: 'Marcus Vance',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    initials: 'MV',
+    blobatarName: 'MarcusVance',
     role: 'AI Operations Manager',
     department: 'Operations & Logistics',
     currentTask: 'Syncing ERP inventory thresholds with supplier webhooks',
@@ -51,8 +49,7 @@ const aiHumansRoster = [
   {
     id: 'research',
     name: 'Elena Rostova',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
-    initials: 'ER',
+    blobatarName: 'ElenaRostova',
     role: 'AI Research Analyst',
     department: 'Market Intelligence',
     currentTask: 'Scraping patent filings & competitor pricing matrix',
@@ -65,8 +62,7 @@ const aiHumansRoster = [
   {
     id: 'hr',
     name: 'Jordan Taylor',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
-    initials: 'JT',
+    blobatarName: 'JordanTaylor',
     role: 'AI HR Assistant',
     department: 'People Operations',
     currentTask: 'Screening 120 senior developer applicants & scheduling',
@@ -79,8 +75,7 @@ const aiHumansRoster = [
   {
     id: 'finance',
     name: 'David Sterling',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
-    initials: 'DS',
+    blobatarName: 'DavidSterling',
     role: 'AI Finance Assistant',
     department: 'Accounting & Audit',
     currentTask: 'Auditing $420k supplier invoices against PO authorizations',
@@ -110,7 +105,7 @@ export default function HeroSection({ onOpenModal }) {
       style={{
         position: 'relative',
         minHeight: '100vh',
-        paddingTop: '140px',
+        paddingTop: '130px',
         paddingBottom: '80px',
         display: 'flex',
         flexDirection: 'column',
@@ -119,17 +114,17 @@ export default function HeroSection({ onOpenModal }) {
         overflow: 'hidden'
       }}
     >
-      {/* Background Radial Lights */}
+      {/* Background Radial Ambiance */}
       <div 
         style={{
           position: 'absolute',
-          top: '5%',
+          top: '2%',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '800px',
-          height: '400px',
-          background: 'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.22) 0%, rgba(236, 72, 153, 0.08) 45%, transparent 70%)',
-          filter: 'blur(60px)',
+          height: '420px',
+          background: 'radial-gradient(ellipse at center, rgba(244, 114, 182, 0.22) 0%, rgba(236, 72, 153, 0.1) 45%, transparent 70%)',
+          filter: 'blur(70px)',
           pointerEvents: 'none',
           zIndex: 0
         }}
@@ -141,13 +136,13 @@ export default function HeroSection({ onOpenModal }) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: '24px', display: 'inline-block' }}
+          style={{ marginBottom: '22px', display: 'inline-block' }}
         >
           <div className="badge-tag">
             <span className="status-indicator-dot active" />
             <span>THE AI WORKFORCE PLATFORM</span>
-            <span style={{ opacity: 0.5 }}>|</span>
-            <span style={{ color: '#ec4899', fontWeight: 700 }}>PERSISTENT DIGITAL EMPLOYEES</span>
+            <span style={{ opacity: 0.4 }}>|</span>
+            <span style={{ color: '#ec4899', fontWeight: 800 }}>PERSISTENT DIGITAL EMPLOYEES</span>
           </div>
         </motion.div>
 
@@ -158,12 +153,12 @@ export default function HeroSection({ onOpenModal }) {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="hero-heading"
           style={{
-            fontSize: '68px',
-            lineHeight: 1.08,
+            fontSize: '66px',
+            lineHeight: 1.1,
             letterSpacing: '-0.04em',
             maxWidth: '1080px',
             margin: '0 auto 16px',
-            color: '#ffffff'
+            color: '#09090b'
           }}
         >
           Build Your AI Workforce.{' '}
@@ -180,14 +175,14 @@ export default function HeroSection({ onOpenModal }) {
           style={{
             fontSize: '20px',
             lineHeight: 1.6,
-            color: '#a1a1aa',
+            color: '#475569',
             maxWidth: '780px',
             margin: '0 auto 36px',
             fontWeight: 400
           }}
         >
           Create AI employees for sales, customer support, operations, research, finance, HR, and other business functions.
-          <span style={{ color: '#f4f4f5', fontWeight: 500, display: 'block', marginTop: '6px' }}>
+          <span style={{ color: '#09090b', fontWeight: 600, display: 'block', marginTop: '6px' }}>
             Give them a role. Define their workflow. Connect their tools. Let Saadhyam execute.
           </span>
         </motion.p>
@@ -210,11 +205,11 @@ export default function HeroSection({ onOpenModal }) {
           </button>
           
           <a
-            href="#how-it-works"
+            href="#the-big-idea"
             className="btn-secondary"
             style={{ textDecoration: 'none', fontSize: '17px', padding: '18px 32px', borderRadius: '9999px' }}
           >
-            <Play size={16} fill="white" />
+            <Play size={15} fill="#09090b" />
             <span>See How It Works</span>
           </a>
         </motion.div>
@@ -230,22 +225,23 @@ export default function HeroSection({ onOpenModal }) {
             position: 'relative'
           }}
         >
-          {/* Glowing frame boundary */}
+          {/* Luminous frame boundary */}
           <div
             className="cyber-card"
             style={{
               padding: '0',
               overflow: 'hidden',
-              boxShadow: '0 40px 100px -20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(168, 85, 247, 0.15)',
-              border: '1px solid rgba(255, 255, 255, 0.12)'
+              boxShadow: '0 30px 80px -15px rgba(236, 72, 153, 0.18), 0 0 0 1px rgba(236, 72, 153, 0.15)',
+              border: '1px solid rgba(236, 72, 153, 0.25)',
+              background: '#ffffff'
             }}
           >
             {/* Window Top Bar / Command HUD */}
             <div
               style={{
-                background: 'rgba(10, 10, 15, 0.95)',
+                background: '#ffffff',
                 padding: '16px 24px',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                borderBottom: '1px solid rgba(236, 72, 153, 0.14)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -255,34 +251,34 @@ export default function HeroSection({ onOpenModal }) {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div style={{ display: 'flex', gap: '8px' }}>
-                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
-                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#eab308' }} />
-                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#22c55e' }} />
+                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#f87171' }} />
+                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#fbbf24' }} />
+                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#34d399' }} />
                 </div>
-                <div style={{ height: '16px', width: '1px', background: 'rgba(255,255,255,0.15)' }} />
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#e4e4e7', fontFamily: 'monospace' }}>
-                  <span style={{ color: '#a855f7' }}>saadhyam://</span>workspace/active-workforce
+                <div style={{ height: '16px', width: '1px', background: 'rgba(236, 72, 153, 0.2)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#09090b', fontFamily: 'monospace', fontWeight: 600 }}>
+                  <span style={{ color: '#ec4899' }}>saadhyam://</span>workspace/active-workforce
                 </div>
               </div>
 
               {/* Status Header Pills */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#10b981' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#059669' }}>
                   <span className="status-indicator-dot active" />
-                  <span style={{ fontWeight: 600 }}>6 AI Humans Online</span>
+                  <span style={{ fontWeight: 700 }}>6 AI Humans Online</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#d8b4fe' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#db2777', fontWeight: 600 }}>
                   <Zap size={14} />
                   <span>{pulseCount} Workflows Executed Today</span>
                 </div>
                 <div style={{
-                  background: 'rgba(168, 85, 247, 0.15)',
-                  border: '1px solid rgba(168, 85, 247, 0.3)',
+                  background: 'rgba(236, 72, 153, 0.1)',
+                  border: '1px solid rgba(236, 72, 153, 0.25)',
                   padding: '4px 10px',
                   borderRadius: '6px',
-                  color: '#e4e4e7',
+                  color: '#db2777',
                   fontSize: '11px',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}>
                   Zero Manual Prompts Required
                 </div>
@@ -294,17 +290,17 @@ export default function HeroSection({ onOpenModal }) {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                background: 'rgba(5, 5, 8, 0.95)',
+                background: '#faf8f9',
                 gap: '1px'
               }}
             >
               {/* Left Column: AI Humans Roster Selection */}
-              <div style={{ padding: '24px', borderRight: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <div style={{ padding: '24px', borderRight: '1px solid rgba(236, 72, 153, 0.12)', background: '#ffffff' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
-                  <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', color: '#a1a1aa', textTransform: 'uppercase' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 800, letterSpacing: '0.08em', color: '#475569', textTransform: 'uppercase' }}>
                     Active Digital Employees ({aiHumansRoster.length})
                   </div>
-                  <div style={{ fontSize: '11px', color: '#10b981', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <div style={{ fontSize: '11px', color: '#059669', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
                     <Activity size={12} /> Real-time sync
                   </div>
                 </div>
@@ -318,10 +314,11 @@ export default function HeroSection({ onOpenModal }) {
                         onClick={() => setActiveEmployeeId(emp.id)}
                         style={{
                           padding: '12px 14px',
-                          borderRadius: '12px',
+                          borderRadius: '14px',
                           cursor: 'pointer',
-                          background: isSelected ? 'rgba(168, 85, 247, 0.15)' : 'rgba(255, 255, 255, 0.02)',
-                          border: isSelected ? '1px solid rgba(168, 85, 247, 0.5)' : '1px solid rgba(255, 255, 255, 0.04)',
+                          background: isSelected ? 'linear-gradient(135deg, #fdf2f8, #fce7f3)' : '#ffffff',
+                          border: isSelected ? '1.5px solid #ec4899' : '1px solid rgba(236, 72, 153, 0.12)',
+                          boxShadow: isSelected ? '0 4px 14px rgba(236, 72, 153, 0.15)' : 'none',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -330,36 +327,14 @@ export default function HeroSection({ onOpenModal }) {
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div style={{ position: 'relative' }}>
-                            <img
-                              src={emp.avatar}
-                              alt={emp.name}
-                              style={{
-                                width: '38px',
-                                height: '38px',
-                                borderRadius: '10px',
-                                objectFit: 'cover',
-                                border: '1px solid rgba(255, 255, 255, 0.15)'
-                              }}
-                            />
-                            <div
-                              style={{
-                                position: 'absolute',
-                                bottom: -2,
-                                right: -2,
-                                width: '10px',
-                                height: '10px',
-                                borderRadius: '50%',
-                                background: emp.statusType === 'active' ? '#10b981' : '#3b82f6',
-                                border: '2px solid #0a0a0f'
-                              }}
-                            />
+                          <div className="blobatar-frame" style={{ width: '42px', height: '42px', flexShrink: 0 }}>
+                            <Blobatar name={emp.blobatarName} animate="hover" size={36} />
                           </div>
                           <div>
-                            <div style={{ fontSize: '14px', fontWeight: 600, color: isSelected ? '#ffffff' : '#e4e4e7' }}>
+                            <div style={{ fontSize: '14px', fontWeight: 700, color: '#09090b' }}>
                               {emp.name}
                             </div>
-                            <div style={{ fontSize: '12px', color: '#a1a1aa' }}>
+                            <div style={{ fontSize: '12px', color: '#64748b' }}>
                               {emp.role}
                             </div>
                           </div>
@@ -368,13 +343,13 @@ export default function HeroSection({ onOpenModal }) {
                         <div style={{ textAlign: 'right' }}>
                           <span
                             style={{
-                              padding: '2px 8px',
+                              padding: '3px 9px',
                               borderRadius: '9999px',
                               fontSize: '11px',
-                              fontWeight: 600,
-                              background: emp.statusType === 'active' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(59, 130, 246, 0.15)',
-                              color: emp.statusType === 'active' ? '#34d399' : '#60a5fa',
-                              border: emp.statusType === 'active' ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid rgba(59, 130, 246, 0.3)'
+                              fontWeight: 700,
+                              background: emp.statusType === 'active' ? 'rgba(16, 185, 129, 0.12)' : 'rgba(236, 72, 153, 0.12)',
+                              color: emp.statusType === 'active' ? '#059669' : '#db2777',
+                              border: emp.statusType === 'active' ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid rgba(236, 72, 153, 0.25)'
                             }}
                           >
                             {emp.status}
@@ -387,42 +362,33 @@ export default function HeroSection({ onOpenModal }) {
               </div>
 
               {/* Right Column: Active AI Human Detailed Dossier */}
-              <div style={{ padding: '28px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div style={{ padding: '28px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: '#faf8f9' }}>
                 <div>
                   {/* Top Employee Header */}
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '22px' }}>
                     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                      <img
-                        src={activeEmployee.avatar}
-                        alt={activeEmployee.name}
-                        style={{
-                          width: '64px',
-                          height: '64px',
-                          borderRadius: '16px',
-                          objectFit: 'cover',
-                          border: '2px solid rgba(168, 85, 247, 0.5)',
-                          boxShadow: '0 0 25px rgba(168, 85, 247, 0.3)'
-                        }}
-                      />
+                      <div className="blobatar-frame" style={{ width: '68px', height: '68px', flexShrink: 0, padding: '4px' }}>
+                        <Blobatar name={activeEmployee.blobatarName} animate="hover" size={60} />
+                      </div>
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <h3 style={{ fontSize: '22px', fontWeight: 700, color: '#ffffff', margin: 0 }}>
+                          <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#09090b', margin: 0 }}>
                             {activeEmployee.name}
                           </h3>
                           <span style={{
-                            background: 'rgba(16, 185, 129, 0.15)',
+                            background: 'rgba(16, 185, 129, 0.12)',
                             border: '1px solid rgba(16, 185, 129, 0.3)',
                             padding: '2px 8px',
                             borderRadius: '6px',
                             fontSize: '11px',
-                            color: '#34d399',
-                            fontWeight: 600
+                            color: '#059669',
+                            fontWeight: 700
                           }}>
                             VERIFIED AI HUMAN
                           </span>
                         </div>
-                        <div style={{ fontSize: '14px', color: '#c084fc', marginTop: '3px', fontWeight: 500 }}>
-                          {activeEmployee.role} • <span style={{ color: '#a1a1aa' }}>{activeEmployee.department}</span>
+                        <div style={{ fontSize: '14px', color: '#db2777', marginTop: '3px', fontWeight: 600 }}>
+                          {activeEmployee.role} • <span style={{ color: '#64748b' }}>{activeEmployee.department}</span>
                         </div>
                       </div>
                     </div>
@@ -431,13 +397,14 @@ export default function HeroSection({ onOpenModal }) {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '8px',
-                      background: 'rgba(255,255,255,0.04)',
+                      background: '#ffffff',
                       padding: '8px 14px',
                       borderRadius: '10px',
-                      border: '1px solid rgba(255,255,255,0.08)'
+                      border: '1px solid rgba(236, 72, 153, 0.15)',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
                     }}>
                       <span className={`status-indicator-dot ${activeEmployee.statusType}`} />
-                      <span style={{ fontSize: '13px', fontWeight: 600, color: '#ffffff' }}>
+                      <span style={{ fontSize: '13px', fontWeight: 700, color: '#09090b' }}>
                         {activeEmployee.status}
                       </span>
                     </div>
@@ -446,17 +413,18 @@ export default function HeroSection({ onOpenModal }) {
                   {/* Current Task Box */}
                   <div
                     style={{
-                      background: 'rgba(168, 85, 247, 0.06)',
-                      border: '1px solid rgba(168, 85, 247, 0.2)',
+                      background: '#ffffff',
+                      border: '1px solid rgba(236, 72, 153, 0.2)',
                       borderRadius: '14px',
                       padding: '16px 20px',
-                      marginBottom: '18px'
+                      marginBottom: '18px',
+                      boxShadow: '0 4px 12px rgba(236, 72, 153, 0.05)'
                     }}
                   >
-                    <div style={{ fontSize: '11px', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, marginBottom: '6px' }}>
+                    <div style={{ fontSize: '11px', color: '#db2777', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 800, marginBottom: '6px' }}>
                       Current Live Task
                     </div>
-                    <div style={{ fontSize: '15px', color: '#ffffff', fontWeight: 500 }}>
+                    <div style={{ fontSize: '15px', color: '#09090b', fontWeight: 600 }}>
                       {activeEmployee.currentTask}
                     </div>
                   </div>
@@ -464,40 +432,43 @@ export default function HeroSection({ onOpenModal }) {
                   {/* Latest Activity Stream */}
                   <div
                     style={{
-                      background: 'rgba(255, 255, 255, 0.02)',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      background: '#ffffff',
+                      border: '1px solid rgba(236, 72, 153, 0.14)',
                       borderRadius: '14px',
                       padding: '16px 20px',
-                      marginBottom: '18px'
+                      marginBottom: '18px',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.02)'
                     }}
                   >
-                    <div style={{ fontSize: '11px', color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 700, marginBottom: '6px' }}>
+                    <div style={{ fontSize: '11px', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', fontWeight: 800, marginBottom: '6px' }}>
                       Autonomous Activity Log
                     </div>
-                    <div style={{ fontSize: '14px', color: '#e4e4e7', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <CheckCircle2 size={16} color="#10b981" />
+                    <div style={{ fontSize: '14px', color: '#1e293b', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 500 }}>
+                      <CheckCircle2 size={16} color="#059669" />
                       <span>{activeEmployee.activity}</span>
                     </div>
                   </div>
 
                   {/* Metrics & Connected Tools */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '20px' }}>
-                    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ fontSize: '11px', color: '#a1a1aa', marginBottom: '4px' }}>Performance SLA</div>
-                      <div style={{ fontSize: '13px', color: '#f4f4f5', fontWeight: 600 }}>
+                    <div style={{ background: '#ffffff', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(236, 72, 153, 0.12)' }}>
+                      <div style={{ fontSize: '11px', color: '#64748b', marginBottom: '4px', fontWeight: 600 }}>Performance SLA</div>
+                      <div style={{ fontSize: '13px', color: '#09090b', fontWeight: 700 }}>
                         {activeEmployee.performance}
                       </div>
                     </div>
-                    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ fontSize: '11px', color: '#a1a1aa', marginBottom: '4px' }}>Integrated Tools</div>
+                    <div style={{ background: '#ffffff', padding: '12px 16px', borderRadius: '12px', border: '1px solid rgba(236, 72, 153, 0.12)' }}>
+                      <div style={{ fontSize: '11px', color: '#64748b', marginBottom: '4px', fontWeight: 600 }}>Integrated Tools</div>
                       <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                         {activeEmployee.tools.map((tool) => (
                           <span key={tool} style={{
                             fontSize: '11px',
-                            background: 'rgba(255,255,255,0.06)',
+                            background: '#fdf2f8',
+                            border: '1px solid rgba(236, 72, 153, 0.2)',
                             padding: '2px 7px',
                             borderRadius: '4px',
-                            color: '#d4d4d8',
+                            color: '#db2777',
+                            fontWeight: 600,
                             fontFamily: 'monospace'
                           }}>
                             {tool}
@@ -509,24 +480,25 @@ export default function HeroSection({ onOpenModal }) {
                 </div>
 
                 {/* Bottom Action Bar */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  <div style={{ fontSize: '12px', color: '#71717a' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '16px', borderTop: '1px solid rgba(236, 72, 153, 0.12)' }}>
+                  <div style={{ fontSize: '12px', color: '#64748b' }}>
                     Operates 24/7 • Enterprise SOC-2 audited • Role-restricted access
                   </div>
                   <button
                     onClick={onOpenModal}
                     style={{
-                      background: 'rgba(168, 85, 247, 0.2)',
-                      border: '1px solid rgba(168, 85, 247, 0.5)',
+                      background: 'linear-gradient(135deg, #ec4899, #a855f7)',
                       color: '#ffffff',
+                      border: 'none',
                       padding: '8px 18px',
                       borderRadius: '8px',
                       fontSize: '13px',
-                      fontWeight: 600,
+                      fontWeight: 700,
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '6px'
+                      gap: '6px',
+                      boxShadow: '0 4px 12px rgba(236, 72, 153, 0.25)'
                     }}
                   >
                     <span>Configure Workflow</span>
