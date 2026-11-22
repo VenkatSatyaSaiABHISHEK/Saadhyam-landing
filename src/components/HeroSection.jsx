@@ -5,6 +5,7 @@ import {
   Activity, Shield, Zap, RefreshCw, Layers, Users, PhoneCall, Check, UserCheck
 } from 'lucide-react';
 import { Blobatar } from "@blobatar/react";
+import SarahAnnouncementCard from './SarahAnnouncementCard';
 
 const aiHumansRoster = [
   {
@@ -131,6 +132,9 @@ export default function HeroSection({ onOpenModal }) {
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+        {/* Sarah Live Announcement Card with NowPlaying Vinyl Animation */}
+        <SarahAnnouncementCard onOpenModal={onOpenModal} />
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

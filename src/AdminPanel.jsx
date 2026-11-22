@@ -26,6 +26,10 @@ export default function AdminPanel() {
   const [selectedLead, setSelectedLead] = useState(null); // For viewing full goals description
 
   const fetchLeads = async () => {
+    if (!db) {
+      console.warn("Firestore db is not initialized.");
+      return;
+    }
     setLeadsLoading(true);
     try {
       const q = query(collection(db, "leads"), orderBy("timestamp", "desc"));
@@ -66,6 +70,10 @@ export default function AdminPanel() {
 
   // Check auth state on mount and subscribe to changes
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
@@ -102,6 +110,10 @@ export default function AdminPanel() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!auth) {
+      setLoginError('Firebase authentication is not configured. Please check your .env settings.');
+      return;
+    }
     setLoginError('');
     setLoading(true);
     try {
@@ -140,6 +152,10 @@ export default function AdminPanel() {
   };
 
   const handleLogout = async () => {
+    if (!auth) {
+      setIsAuthenticated(false);
+      return;
+    }
     try {
       await signOut(auth);
       setIsAuthenticated(false);
@@ -439,7 +455,7 @@ export default function AdminPanel() {
                 Admin <span className="text-gradient">Dashboard</span>
               </h1>
               <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)' }}>
-                Authorized Account: {auth.currentUser?.email}
+                Authorized Account: {auth?.currentUser?.email || 'N/A'}
               </p>
             </div>
           </div>

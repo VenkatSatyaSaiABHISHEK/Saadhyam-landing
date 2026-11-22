@@ -27,6 +27,17 @@ export default function CreateAIHumanModal({ isOpen, onClose, onSuccess }) {
     }
 
     setIsSubmitting(true);
+    if (!db) {
+      console.warn('Firebase db is not configured. Simulating lead capture in development.');
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        if (onSuccess) onSuccess();
+        onClose();
+      }, 2000);
+      setIsSubmitting(false);
+      return;
+    }
     try {
       const docRef = await addDoc(collection(db, 'leads'), {
         name: formData.name,
